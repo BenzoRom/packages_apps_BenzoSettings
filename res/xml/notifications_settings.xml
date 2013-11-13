@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notifications_settings_benzo_title" >
 
+    <com.benzo.settings.preference.SecureSettingSwitchPreference
+        android:key="adb_notify"
+        android:title="@string/adb_notify_title"
+        android:summary="@string/adb_notify_summary"
+        android:defaultValue="true" />
+
     <Preference
         android:title="@string/power_notifications_title"
         android:summary="@string/power_notifications_summary">

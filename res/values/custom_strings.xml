@@ -751,4 +751,8 @@
     <string name="lockscreen_rotation_title">Enable rotation</string>
     <string name="lockscreen_rotation_summary">Allow locksreen to roate when moving phone</string>
 
+    <!-- ADB notification -->
+    <string name="adb_notify_title">ADB notification</string>
+    <string name="adb_notify_summary">Display a notification when android debugging is enabled</string>
+
 </resources>
