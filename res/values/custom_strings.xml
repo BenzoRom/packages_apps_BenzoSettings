@@ -638,4 +638,19 @@
     <string name="immersive_recents_statusbar">Statusbar only</string>
     <string name="immersive_recents_navbar">Navbar only</string>
 
+    <!-- App circle bar -->
+    <string name="app_circle_bar_title">App Circle Bar</string>
+    <string name="app_circle_bar_summary">Show a selectable circle of apps to launch</string>
+    <string name="app_circle_bar_enable_title">Enable app circle bar</string>
+    <string name="app_circle_bar_enable_summary">Show circle app launcher after touching right side of screen</string>
+    <string name="app_circle_bar_included_apps_title">Included apps</string>
+    <string name="app_circle_bar_included_apps_summary">Apps that will show in app circle bar</string>
+    <string name="trigger_category">Trigger Area</string>
+    <string name="trigger_width_title">Width</string>
+    <string name="trigger_width_summary">Width of the trigger area</string>
+    <string name="trigger_top_title">Position</string>
+    <string name="trigger_top_summary">Vertical postion of the trigger area</string>
+    <string name="trigger_bottom_title">Height</string>
+    <string name="trigger_bottom_summary">Height of the trigger area</string>
+
 </resources>

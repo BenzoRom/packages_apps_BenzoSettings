@@ -25,4 +25,10 @@
         android:summary="@string/doze_settings_summary"
         android:fragment="com.benzo.settings.system.DozeSettings" />
 
+    <Preference
+        android:key="app_circle_bar"
+        android:title="@string/app_circle_bar_title"
+        android:summary="@string/app_circle_bar_summary"
+        android:fragment="com.benzo.settings.AppCircleBar" />
+
 </PreferenceScreen>
