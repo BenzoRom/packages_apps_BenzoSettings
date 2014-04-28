@@ -29,6 +29,14 @@
                 android:targetClass="com.android.settings.applications.AppOpsSummary" />
         </Preference>
 
+        <!-- App sidebar -->
+        <Preference
+            android:key="app_sidebar"
+            android:fragment="com.benzo.settings.AppSidebar"
+            android:title="@string/app_sidebar_title"
+            android:layout="@layout/preference_benzoextra_appbar" 
+            />
+
         <!-- Buttons -->
         <Preference
             android:key="button_settings"
