@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
@@ -35,6 +36,7 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.widget.SeekBarPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -54,6 +56,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BATT_ANIMATE = "battery_bar_animate";
 
     private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+    private static final String LONG_PRESS_KILL_DELAY = "long_press_kill_delay";
 
     private ListPreference mBatteryBar;
     private ListPreference mBatteryBarStyle;
@@ -67,6 +70,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mBatteryBarBatteryHighColor;
 
     private SwitchPreference mKillAppLongPressBack;
+    private SeekBarPreference mLongpressKillDelay;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -157,6 +161,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 KILL_APP_LONGPRESS_BACK, 0);
         mKillAppLongPressBack.setChecked(killAppLongPressBack != 0);
 
+        // kill-app long press back delay
+        mLongpressKillDelay = (SeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
+        int killconf = Settings.System.getInt(getContentResolver(),
+                Settings.System.LONG_PRESS_KILL_DELAY, 1000);
+        mLongpressKillDelay.setProgress(killconf);
+        mLongpressKillDelay.setOnPreferenceChangeListener(this);
+
         updateBatteryBarOptions();
     }
 
@@ -222,6 +233,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(),
 		KILL_APP_LONGPRESS_BACK, value ? 1 : 0);
+            return true;
+        } else if (preference == mLongpressKillDelay) {
+            int killconf = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LONG_PRESS_KILL_DELAY, killconf);
             return true;
        }
        return false;

@@ -39,6 +39,7 @@
     <string name="notifications_settings_benzo_title">Notifications</string>
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
+    <string name="navigation_other_category">Other</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
@@ -478,5 +479,6 @@
     <!-- kill app long press back -->
     <string name="kill_app_longpress_back">Kill app back button</string>
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
+    <string name="long_press_kill_delay">App kill delay</string>
 
 </resources>
