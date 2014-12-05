@@ -20,6 +20,18 @@
     android:title="@string/lockscreen_settings_benzo_title" >
 
     <Preference
+         android:key="lockscreen_shortcuts"
+         android:title="@string/lockscreen_shortcuts_slim_title"
+         android:summary="@string/lockscreen_shortcuts_slim_summary"
+         android:fragment="com.benzo.settings.slim.dslv.ActionListViewSettings">
+             <extra android:name="actionMode" android:value="4" />
+             <extra android:name="maxAllowedActions" android:value="8" />
+             <extra android:name="disableLongpress" android:value="true" />
+             <extra android:name="useAppPickerOnly" android:value="true" />
+             <extra android:name="fragment" android:value="com.benzo.settings.slim.fragments.LockscreenShortcutFragment" />
+    </Preference>
+
+    <Preference
             android:title="@string/lockscreen_shortcuts_title"
             android:summary="@string/lockscreen_shortcuts_summary">
         <intent android:action="android.intent.action.MAIN"

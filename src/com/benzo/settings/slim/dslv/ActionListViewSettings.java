@@ -35,6 +35,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -324,18 +325,23 @@ public class ActionListViewSettings extends ListFragment implements
         }
         if (bmp != null && !mPendingLongpress) {
             // Icon is present, save it for future use and add the file path to the action.
-            String fileName = mActivity.getFilesDir()
-                    + File.separator + "shortcut_" + System.currentTimeMillis() + ".png";
-            try {
-                FileOutputStream out = new FileOutputStream(fileName);
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
-                out.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                action = action + "?hasExtraIcon=" + fileName;
-                File image = new File(fileName);
-                image.setReadable(true, false);
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                File folder = new File(Environment.getExternalStorageDirectory() + File.separator +
+                        ".aicp" + File.separator + "icons");
+                folder.mkdirs();
+                String fileName = folder.toString()
+                        + File.separator + "shortcut_" + System.currentTimeMillis() + ".png";
+                try {
+                    FileOutputStream out = new FileOutputStream(fileName);
+                    bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    action = action + "?hasExtraIcon=" + fileName;
+                    File image = new File(fileName);
+                    image.setReadable(true, false);
+                }
             }
         }
         if (mPendingNewAction) {
@@ -516,8 +522,10 @@ public class ActionListViewSettings extends ListFragment implements
     }
 
     private ArrayList<ActionConfig> getConfig() {
-/* Disabled for now till all features are back. Enable it step per step!!!!!!
         switch (mActionMode) {
+            case LOCKSCREEN_SHORTCUT:
+                return ActionHelper.getLockscreenShortcutConfig(mActivity);
+/* Disabled for now till all features are back. Enable it step per step!!!!!!
             case NAV_BAR:
                 return ActionHelper.getNavBarConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
@@ -533,18 +541,19 @@ public class ActionListViewSettings extends ListFragment implements
             case POWER_MENU_SHORTCUT:
                 return PolicyHelper.getPowerMenuConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            case LOCKSCREEN_SHORTCUT:
-                return ActionHelper.getLockscreenShortcutConfig(mActivity);
             case SHAKE_EVENTS_DISABLED:
                 return ActionHelper.getDisabledShakeApps(mActivity);
-        }
 */
+        }
         return null;
     }
 
     private void setConfig(ArrayList<ActionConfig> actionConfigs, boolean reset) {
-/* Disabled for now till all features are back. Enable it step per step!!!!!!
         switch (mActionMode) {
+            case LOCKSCREEN_SHORTCUT:
+                ActionHelper.setLockscreenShortcutConfig(mActivity, actionConfigs, reset);
+                break;
+/* Disabled for now till all features are back. Enable it step per step!!!!!!
             case NAV_BAR:
                 ActionHelper.setNavBarConfig(mActivity, actionConfigs, reset);
                 break;
@@ -560,14 +569,11 @@ public class ActionListViewSettings extends ListFragment implements
             case POWER_MENU_SHORTCUT:
                 PolicyHelper.setPowerMenuConfig(mActivity, actionConfigs, reset);
                 break;
-            case LOCKSCREEN_SHORTCUT:
-                ActionHelper.setLockscreenShortcutConfig(mActivity, actionConfigs, reset);
-                break;
             case SHAKE_EVENTS_DISABLED:
                 ActionHelper.setDisabledShakeApps(mActivity, actionConfigs, reset);
                 break;
-        }
 */
+        }
     }
 
     private class ViewHolder {
