@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/statusbar_settings_title" >
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="battery_save_mode_color"
+            android:title="@string/battery_saver_color_title"
+            android:summary="@string/battery_saver_color_summary"
+            android:defaultValue="true" />
+
      <Preference
             android:title="@string/statusbar_tuner_title"
             android:summary="@string/statusbar_tuner_summary">

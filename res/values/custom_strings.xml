@@ -772,4 +772,8 @@
     <string name="lock_clock_font_medium_normal">Medium</string>
     <string name="lock_clock_font_medium_italic">Medium Italic</string>
 
+    <!-- Battery saver color -->
+    <string name="battery_saver_color_title">Battery saver warning color</string>
+    <string name="battery_saver_color_summary">Enable orange system bars when battery saver is in use</string>
+
 </resources>
