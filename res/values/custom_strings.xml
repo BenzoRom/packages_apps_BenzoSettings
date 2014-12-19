@@ -41,6 +41,16 @@
     <string name="notifications_settings_benzo_title">Notifications</string>
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
 
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
+    <string name="color_default">Default</string>
+
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
     <string name="pixel_navbar_anim_summary">Requires a config change(display size, navbar position, reboot) themes may overwrite</string>
