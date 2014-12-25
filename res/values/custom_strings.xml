@@ -924,4 +924,8 @@
     <string name="show_lockscreen_alarm_title">Alarm text</string>
     <string name="show_lockscreen_alarm_summary">Change the alarm text\'s visibility underneath the clock widget</string>
 
+    <!-- Navbar left in landscape -->
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
+
 </resources>
