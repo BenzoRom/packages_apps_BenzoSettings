@@ -20,4 +20,8 @@
     <string name="benzo_settings_title">Benzo Extras</string>
     <string name="quicksettings_title">Quick Settings</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
+    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+
 </resources>
