@@ -56,4 +56,8 @@
     <string name="global_actions_max_rows_title">Maximum rows</string>
     <string name="global_actions_max_rows_summary">Number of icons up and down</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
+    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+
 </resources>
