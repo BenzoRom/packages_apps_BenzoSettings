@@ -115,6 +115,14 @@
             android:layout="@layout/preference_benzoextra_statusbar" 
             />
 
+        <!-- Wakelock blocker -->
+        <Preference
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:fragment="com.benzo.settings.WakeLockBlocker"
+            android:layout="@layout/preference_benzoextra_wakelock" 
+            />
+
         <!-- Weather -->
         <Preference
             android:key="lockscreen_weather"
