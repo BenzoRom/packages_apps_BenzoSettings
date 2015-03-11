@@ -117,4 +117,12 @@
             android:layout="@layout/preference_benzoextra_statusbar" 
             />
 
+        <!-- Weather -->
+        <Preference
+            android:key="lockscreen_weather"
+            android:title="@string/lockscreen_weather_title"
+            android:fragment="com.benzo.settings.LockScreenWeatherSettings"
+            android:layout="@layout/preference_benzoextra_weather"
+            />
+
 </PreferenceScreen>
