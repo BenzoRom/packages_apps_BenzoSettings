@@ -37,6 +37,14 @@
 	    android:layout="@layout/preference_benzoextra_buttons"
 	    />
 
+        <!-- Gesture anywhere -->
+        <Preference
+            android:key="gesture_anywhere"
+            android:fragment="com.benzo.settings.gestureanywhere.GestureAnywhereSettings"
+            android:title="@string/gesture_anywhere_title"
+            android:layout="@layout/preference_benzoextra_gestureanywhere"
+            />
+
        <!-- Lockscreen -->
        <Preference
             android:key="lockscreen_settings"
