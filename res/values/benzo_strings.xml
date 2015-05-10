@@ -81,6 +81,7 @@
     <string name="volume_steps_reset">Reset</string>
 
     <!-- Global Actions -->
+    <string name="global_actions_cat_title">Actions</string>
     <string name="global_actions_title">Power menu</string>
     <string name="global_actions_summary">Select what to show when you press the power button</string>
     <string name="global_actions_power">Power</string>
@@ -127,5 +128,9 @@
     <!-- Brightness control -->
     <string name="status_bar_toggle_brightness">Brightness Control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding finger across the statusbar</string>
+
+    <!-- Power menu on lockscreen -->
+    <string name="power_menu_hide_on_secure_title">Hide on lockscreen</string>
+    <string name="power_menu_hide_on_secure_summary">Hides the global actions menu on secure lockscreen</string>
 
 </resources>
