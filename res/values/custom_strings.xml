@@ -178,4 +178,8 @@
     <string name="quick_pulldown_right">Right</string>
     <string name="quick_pulldown_always">Always</string>
 
+    <!-- Power menu on lockscreen -->
+    <string name="power_menu_hide_on_secure_title">Hide power menu</string>
+    <string name="power_menu_hide_on_secure_summary">Hides the power menu on secure lockscreen</string>
+
 </resources>

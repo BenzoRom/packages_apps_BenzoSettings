@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lock_screen_settings_title" >
 
+    <com.benzo.settings.preference.SecureSettingSwitchPreference
+        android:key="power_menu_hide_on_secure"
+        android:title="@string/power_menu_hide_on_secure_title"
+        android:summary="@string/power_menu_hide_on_secure_summary"
+        android:defaultValue="false" />
+
     <PreferenceScreen
         android:key="lockscreen_shortcuts"
         android:title="@string/lockscreen_shortcuts_title"
