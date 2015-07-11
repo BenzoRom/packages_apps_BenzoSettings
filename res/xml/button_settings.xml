@@ -33,6 +33,12 @@
         android:entryValues="@array/volbtn_cursor_control_values"
         android:persistent="false" />
 
+        <Preference
+            android:key="vol_steps"
+            android:fragment="com.benzo.settings.benzo.VolumeStepsFragment"
+            android:title="@string/volume_steps_fragment_title"
+            android:summary="@string/volume_steps_summary" />
+
     <PreferenceCategory
         android:key="vol_dnd_category"
         android:title="@string/vol_dnd_category_title"/>
