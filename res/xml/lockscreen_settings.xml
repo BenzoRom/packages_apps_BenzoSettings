@@ -19,24 +19,35 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lockscreen_settings_benzo_title" >
 
-    <Preference
-         android:key="lockscreen_shortcuts"
-         android:title="@string/lockscreen_shortcuts_slim_title"
-         android:summary="@string/lockscreen_shortcuts_slim_summary"
-         android:fragment="com.benzo.settings.slim.dslv.ActionListViewSettings">
-             <extra android:name="actionMode" android:value="4" />
-             <extra android:name="maxAllowedActions" android:value="8" />
-             <extra android:name="disableLongpress" android:value="true" />
-             <extra android:name="useAppPickerOnly" android:value="true" />
-             <extra android:name="fragment" android:value="com.benzo.settings.slim.fragments.LockscreenShortcutFragment" />
-    </Preference>
+     <PreferenceCategory
+         android:key="locksystem_category"
+         android:title="@string/lockscreen_shortcuts_category"/>
 
-    <Preference
+        <ListPreference
+            android:key="lockscreen_shortcuts_launch_type"
+            android:title="@string/lockscreen_shorcuts_launch_type_title"
+            android:summary="%s"
+            android:defaultValue="1"
+            android:entries="@array/lockscreen_shortcuts_launch_type_entries"
+            android:entryValues="@array/lockscreen_shortcuts_launch_type_values" />
+
+        <Preference
+            android:key="lockscreen_shortcuts"
+            android:fragment="com.benzo.settings.slim.dslv.ActionListViewSettings"
+            android:summary="@string/lockscreen_shortcuts_slim_summary"
+            android:title="@string/lockscreen_shortcuts_slim_title">
+         <extra android:name="actionMode" android:value="4" />
+         <extra android:name="maxAllowedActions" android:value="8" />
+         <extra android:name="disableLongpress" android:value="true" />
+         <extra android:name="useAppPickerOnly" android:value="true" />
+        </Preference>
+
+        <Preference
             android:title="@string/lockscreen_shortcuts_title"
             android:summary="@string/lockscreen_shortcuts_summary">
-        <intent android:action="android.intent.action.MAIN"
+            <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.LockscreenTunerActivity" />
-    </Preference>
+        </Preference>
 
 </PreferenceScreen>

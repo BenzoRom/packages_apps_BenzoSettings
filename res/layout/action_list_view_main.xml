@@ -52,7 +52,7 @@
         android:paddingBottom="0dp"
         android:paddingLeft="0dp"
         android:layout_margin="0dp"
-        android:dividerHeight="1dp"
+        android:dividerHeight="0dp"
         settings:dragEnabled="true"
         settings:collapsedHeight="2dp"
         settings:dragScrollStart="0.33"

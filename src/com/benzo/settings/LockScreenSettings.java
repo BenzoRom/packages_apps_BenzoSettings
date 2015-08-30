@@ -15,36 +15,73 @@
  */
 package com.benzo.settings;
 
-import android.content.ContentResolver;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.UserHandle;
+import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.support.v7.preference.ListPreference;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-public class LockScreenSettings extends SettingsPreferenceFragment {
+public class LockScreenSettings extends SettingsPreferenceFragment implements
+        OnPreferenceChangeListener {
 
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.lockscreen_settings);
-        PreferenceScreen prefSet = getPreferenceScreen();
-        ContentResolver resolver = getActivity().getContentResolver();
-    }
+    private static final String PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE =
+            "lockscreen_shortcuts_launch_type";
+
+    private ListPreference mLockscreenShortcutsLaunchType;
 
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.BENZO;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.lockscreen_settings);
+        PreferenceScreen prefSet = getPreferenceScreen();
+
+        mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
+                PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE);
+        mLockscreenShortcutsLaunchType.setOnPreferenceChangeListener(this);
+        setHasOptionsMenu(false);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+            ViewGroup container, Bundle savedInstanceState) {
+        final View view = super.onCreateView(inflater, container, savedInstanceState);
+        final ListView list = (ListView) view.findViewById(android.R.id.list);
+        // our container already takes care of the padding
+        if (list != null) {
+            int paddingTop = list.getPaddingTop();
+            int paddingBottom = list.getPaddingBottom();
+            list.setPadding(0, paddingTop, 0, paddingBottom);
+        }
+        return view;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mLockscreenShortcutsLaunchType) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS,
+                    Integer.valueOf((String) newValue));
+        }
+        return true;
     }
 }

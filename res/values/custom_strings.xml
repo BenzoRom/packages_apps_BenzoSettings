@@ -18,7 +18,6 @@
 
     <!-- General -->
     <string name="ok">Okay</string>
-    <string name="reset">Reset</string>
     <string name="default_string">Default</string>
     <string name="add">Add</string>
     <string name="enabled">Enabled</string>
@@ -143,8 +142,8 @@
     <string name="statusbar_tuner_summary">Battery options and statusbar icons to disable</string>
     <string name="navbar_tuner_title">Edit navigation bar</string>
     <string name="navbar_tuner_summary">Edit the navigation bar layout and buttons</string>
-    <string name="lockscreen_shortcuts_title">Lockscreen shortcuts</string>
-    <string name="lockscreen_shortcuts_summary">Manage lockscreen bottom shortcuts</string>
+    <string name="lockscreen_shortcuts_title">Bottom shortcuts</string>
+    <string name="lockscreen_shortcuts_summary">Manage lockscreen shortcuts down at the bottom</string>
     <string name="power_notifications_title">Power notifications</string>
     <string name="power_notifications_summary">Advanced notifications control on long press</string>
     <string name="vol_dnd_category_title">Do not disturb mode</string>
@@ -237,13 +236,14 @@
 
     <!-- Lockscreen shortcuts -->
     <string name="lockscreen_shortcuts_category">Shortcuts</string>
-    <string name="lockscreen_shortcuts_title">Lockscreen shortcuts midscreen</string>
-    <string name="lockscreen_shortcuts_summary">Change the shortcuts that are about halfway up on the lockscreen</string>
-    <string name="lockscreen_shorcuts_longpress_title">Shortcuts longpress</string>
-    <string name="lockscreen_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
+    <string name="lockscreen_shortcuts_slim_title">Upper Shortcuts</string>
+    <string name="lockscreen_shortcuts_slim_summary">Change the shortcuts right under the lockscreen clock</string>
+    <string name="lockscreen_shorcuts_launch_type_title">Shortcut click type</string>
+    <string name="lockscreen_shortcuts_single_tap">Click</string>
+    <string name="lockscreen_shortcuts_double_tap">Double tap</string>
+    <string name="lockscreen_shortcuts_longpress">Longpress</string>
 
     <!-- Slim DSLV -->
-    <string name="shortcut_action_none">None</string>
     <string name="shortcut_action_longpress">Longpress:</string>
     <string name="shortcut_action_select_action_longpress">Choose longpress action:</string>
     <string name="shortcut_action_select_action">Choose action:</string>
