@@ -82,6 +82,7 @@
     <string name="global_actions_screenrecord">Screenrecord</string>
     <string name="global_actions_soundpanel">Sound Panel</string>
     <string name="global_actions_users">Users</string>
+    <string name="global_actions_onthego_title">On-The-Go</string>
     <string name="global_actions_columns_rows_title">Dialog Setup</string>
     <string name="global_actions_columns_rows_summary">Adjust how many icons to show for power menu</string>
     <string name="global_actions_max_columns_title">Maximum columns</string>
