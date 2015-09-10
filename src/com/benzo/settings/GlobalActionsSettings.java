@@ -32,7 +32,6 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 public class GlobalActionsSettings extends SettingsPreferenceFragment implements
@@ -43,7 +42,6 @@ public class GlobalActionsSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.global_actions);
         PreferenceScreen prefSet = getPreferenceScreen();
-
     }
 
     @Override
