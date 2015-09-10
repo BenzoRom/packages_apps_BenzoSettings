@@ -627,5 +627,10 @@
     <string name="global_actions_flashlight">Flashlight</string>
     <string name="global_actions_advanced_reboot_title">Enable advanced restart</string>
     <string name="global_actions_advanced_reboot_summary">When restarting also show options for recovery and bootloader</string>
+    <!-- On-The-Go -->
+    <string name="onthego_title">On-The-Go Mode</string>
+    <string name="global_actions_onthego_title">On-The-Go</string>
+    <string name="onthego_alpha_title">On-The-Go Alpha</string>
+    <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay.</string>
 
 </resources>
