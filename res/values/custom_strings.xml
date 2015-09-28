@@ -486,4 +486,8 @@
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
     <string name="long_press_kill_delay">App kill delay</string>
 
+    <!-- Media art -->
+    <string name="media_art_title">Media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
+
 </resources>
