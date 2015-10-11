@@ -53,6 +53,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BATT_BAR_WIDTH = "battery_bar_thickness";
     private static final String PREF_BATT_ANIMATE = "battery_bar_animate";
 
+    private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+
     private ListPreference mBatteryBar;
     private ListPreference mBatteryBarStyle;
     private ListPreference mBatteryBarThickness;
@@ -63,6 +65,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mBatteryBarBatteryLowColor;
     private ColorPickerPreference mBatteryBarBatteryLowColorWarn;
     private ColorPickerPreference mBatteryBarBatteryHighColor;
+
+    private SwitchPreference mKillAppLongPressBack;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -146,6 +150,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 Settings.System.BATTERY_BAR_THICKNESS, 1)) + "");
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
+        // kill-app long press back
+        mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
+        mKillAppLongPressBack.setOnPreferenceChangeListener(this);
+        int killAppLongPressBack = Settings.Secure.getInt(getContentResolver(),
+                KILL_APP_LONGPRESS_BACK, 0);
+        mKillAppLongPressBack.setChecked(killAppLongPressBack != 0);
+
         updateBatteryBarOptions();
     }
 
@@ -207,6 +218,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             int val = Integer.parseInt((String) newValue);
             return Settings.System.putInt(resolver,
                     Settings.System.BATTERY_BAR_THICKNESS, val);
+        } else if (preference == mKillAppLongPressBack) {
+            boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(getContentResolver(),
+		KILL_APP_LONGPRESS_BACK, value ? 1 : 0);
+            return true;
        }
        return false;
      }
