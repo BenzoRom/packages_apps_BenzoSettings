@@ -19,6 +19,7 @@
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
     <string name="button_settings_title">Buttons</string>
+    <string name="button_settings_volume_title">Volume Buttons</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="benzo_settings_power_menu_title">Power Menu</string>
 
@@ -85,5 +86,11 @@
     <string name="global_actions_max_columns_summary">Number of icons left and right</string>
     <string name="global_actions_max_rows_title">Maximum rows</string>
     <string name="global_actions_max_rows_summary">Number of icons up and down</string>
+
+    <!-- Volume key cursor control -->
+    <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
 </resources>

@@ -19,4 +19,16 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/button_settings_title" >
 
+    <PreferenceCategory
+        android:key="volume_button_category"
+        android:title="@string/button_settings_volume_title" />
+
+        <com.benzo.settings.preference.SystemSettingIntListPreference
+            android:key="volume_key_cursor_control"
+            android:title="@string/volbtn_cursor_control_title"
+            android:entries="@array/volbtn_cursor_control_entries"
+            android:entryValues="@array/volbtn_cursor_control_values"
+            android:summary="%s"
+            android:defaultValue="0" />
+
 </PreferenceScreen>
