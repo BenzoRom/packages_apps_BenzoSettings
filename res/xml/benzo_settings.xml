@@ -30,12 +30,12 @@
         </Preference>
 
         <!-- Buttons -->
-        <!--Preference
+        <Preference
             android:key="button_settings"
             android:title="@string/button_settings_title"
             android:fragment="com.benzo.settings.ButtonSettings"
 	    android:layout="@layout/preference_benzoextra_buttons"
-	    /-->
+	    />
 
         <!-- Navigation Bar -->
         <Preference
