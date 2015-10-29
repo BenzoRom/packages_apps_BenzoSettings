@@ -19,6 +19,12 @@
     xmlns:benzo="http://schemas.android.com/apk/res-auto"
     android:title="@string/more_settings_title" >
 
+     <com.benzo.settings.preference.SystemSettingSwitchPreference
+         android:key="disable_fc_notifications"
+         android:title="@string/disable_fc_notifications_title"
+         android:summary="@string/disable_fc_notifications_summary"
+         android:defaultValue="false" />
+
      <ListPreference
          android:key="systemui_theme_style"
          android:title="@string/systemui_theme_style_title"
