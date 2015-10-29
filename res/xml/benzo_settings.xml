@@ -19,6 +19,14 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/benzo_settings_title" >
 
+        <!-- Animation Settings -->
+        <Preference
+            android:key="animation_settings"
+            android:title="@string/animation_title"
+            android:fragment="com.benzo.settings.animation.AnimationSettings"
+            android:layout="@layout/preference_benzoextra_animations"
+            />
+
         <!-- AppOps -->
         <Preference
             android:key="app_ops_settings"
