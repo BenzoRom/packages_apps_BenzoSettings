@@ -894,4 +894,8 @@
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
 
+    <!--Volume keys control media -->
+    <string name="volume_keys_control_media_stream_title">Controls media volume</string>
+    <string name="volume_keys_control_media_stream_summary">Force the volume keys to always control media stream</string>
+
 </resources>

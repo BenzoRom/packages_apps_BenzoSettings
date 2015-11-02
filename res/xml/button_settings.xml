@@ -51,6 +51,12 @@
             android:title="@string/volume_steps_fragment_title"
             android:summary="@string/volume_steps_summary" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_keys_control_media_stream"
+            android:title="@string/volume_keys_control_media_stream_title"
+            android:summary="@string/volume_keys_control_media_stream_summary"
+            android:defaultValue="false" />
+
         <com.benzo.settings.preference.SystemSettingListPreference
             android:key="volume_key_cursor_control"
             android:dialogTitle="@string/volbtn_cursor_control_title"
