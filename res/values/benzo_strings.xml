@@ -142,4 +142,13 @@
     <string name="status_bar_activity_indicators_title">Show activity indicators</string>
     <string name="status_bar_activity_indicators_summary">Show up and down icons on mobile and wifi icons when data is used</string>
 
+    <!-- Quick QS pulldown-->
+    <string name="quick_pulldown_title">Quick pulldown</string>
+    <string name="quick_pulldown_summary">%1$s edge of the statusbar pulls down Quick Settings</string>
+    <string name="quick_pulldown_summary_always">Always show Quick Settings on statusbar pulldown</string>
+    <string name="quick_pulldown_off">Off</string>
+    <string name="quick_pulldown_left">Left</string>
+    <string name="quick_pulldown_right">Right</string>
+    <string name="quick_pulldown_always">Always</string>
+
 </resources>

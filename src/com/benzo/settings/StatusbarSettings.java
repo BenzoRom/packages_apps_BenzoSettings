@@ -15,10 +15,15 @@
  */
 package com.benzo.settings;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
@@ -31,17 +36,53 @@ import com.android.internal.logging.nano.MetricsProto;
 
 @SearchIndexable
 public class StatusbarSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        OnPreferenceChangeListener {
+
+    private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "status_bar_quick_qs_pulldown";
+
+    private ListPreference mQuickPulldown;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.statusbar_settings);
+        ContentResolver contentResolver = getActivity().getContentResolver();
+
+        // Quick QS Pulldown
+        mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
+        int quickPulldownValue = Settings.System.getIntForUser(contentResolver,
+                Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 0,
+                UserHandle.USER_CURRENT);
+        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
+        mQuickPulldown.setOnPreferenceChangeListener(this);
+        updateQuickPulldownSummary(quickPulldownValue);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver contentResolver = getActivity().getContentResolver();
+        if (preference == mQuickPulldown) {
+            int quickPulldownValue = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(contentResolver,
+                    Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
+                    quickPulldownValue, UserHandle.USER_CURRENT);
+            updateQuickPulldownSummary(quickPulldownValue);
+        }
         return true;
+    }
+
+    private void updateQuickPulldownSummary(int value) {
+        Resources res = getResources();
+        if (value == 0) {
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_off));
+        } else if (value == 3) {
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary_always));
+        } else {
+            String direction = res.getString(value == 2
+                    ? R.string.quick_pulldown_left
+                    : R.string.quick_pulldown_right);
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
+        }
     }
 
     @Override
