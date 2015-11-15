@@ -77,7 +77,6 @@
     <string name="title_animation_no_override">Prevent app overrides</string>
     <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
     <string name="animation_duration_default">Default</string>
-
     <!-- Toast Animation -->
     <string name="toast_animation_title">Toast animation</string>
     <string name="toast_none_animation">None</string>
@@ -96,7 +95,6 @@
     <string name="toast_Translucent_animation">Translucent</string>
     <string name="toast_SlideLeftRight_animation">Slide left to right</string>
     <string name="toast_SlideRightLeft_animation">Slide right to left</string>
-
     <!-- ListView animation -->
     <string name="listview_animation_title">ListView animation</string>
     <string name="listview_off">Default</string>
@@ -110,7 +108,6 @@
     <string name="listview_fold">Fold</string>
     <string name="listview_translate_left">Translate (left)</string>
     <string name="listview_translate_right">Translate (right)</string>
-
     <!-- ListView interpolator -->
     <string name="listview_interpolator_title">ListView interpolator</string>
     <string name="listview_accelerate_interpolator">Accelerate</string>
@@ -120,5 +117,12 @@
     <string name="listview_overshoot_interpolator">Overshoot</string>
     <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
+    <!-- Option to enable/disable scrolling cache -->
+    <string name="pref_scrollingcache_title">Scrolling cache</string>
+    <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
+    <string name="pref_scrollingcache_force_enable">Force enable</string>
+    <string name="pref_scrollingcache_default_enable">Default enable</string>
+    <string name="pref_scrollingcache_default_disable">Default disable</string>
+    <string name="pref_scrollingcache_force_disable">Force disable</string>
 
 </resources>
