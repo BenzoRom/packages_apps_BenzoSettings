@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017 Benzo Rom
+     Copyright (C) 2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,20 +14,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-
-    <dimen name="header_icon_width">28dp</dimen>
-
-    <!-- Gesture Anywhere -->
-    <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
-    <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
-    <dimen name="shortcut_picker_left_padding">70dip</dimen>
-
-    <!-- FAB Dimensions -->
-    <dimen name="fab_size">56dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="fab_icon_size">24dp</dimen>
-    <dimen name="fab_elevation_normal">8dp</dimen>
-    <dimen name="fab_elevation_pressed">6dp</dimen>
-
-</resources>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/floating_action_button"
+             style="@style/floating_action_button">
+    <ImageView
+            style="@style/floating_action_button_image"
+            android:src="@drawable/ic_menu_add_white"/>
+</FrameLayout>
