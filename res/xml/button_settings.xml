@@ -31,10 +31,16 @@
             android:summary="%s"
             android:defaultValue="0" />
 
-    <Preference
-        android:key="vol_steps"
-        android:title="@string/volume_steps_fragment_title"
-        android:summary="@string/volume_steps_summary"
-        android:fragment="com.benzo.settings.VolumeStepsFragment" />
+        <Preference
+            android:key="vol_steps"
+            android:title="@string/volume_steps_fragment_title"
+            android:summary="@string/volume_steps_summary"
+            android:fragment="com.benzo.settings.VolumeStepsFragment" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_rocker_wake"
+            android:summary="@string/volume_rocker_wake_summary"
+            android:title="@string/volume_rocker_wake_title"
+            android:defaultValue="false" />
 
 </PreferenceScreen>
