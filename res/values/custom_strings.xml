@@ -608,4 +608,8 @@
     <string name="systemui_theme_style_light">Light style</string>
     <string name="systemui_theme_style_dark">Dark style</string>
 
+    <!--Volume keys -->
+    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
+
 </resources>
