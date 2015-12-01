@@ -144,4 +144,8 @@
     <string name="status_bar_activity_indicators_title">Show activity indicators</string>
     <string name="status_bar_activity_indicators_summary">Show up and down icons on mobile and wifi icons when data is used</string>
 
+    <!--Volume keys -->
+    <string name="volume_rocker_wake_title">Wake-up device</string>
+    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
+
 </resources>
