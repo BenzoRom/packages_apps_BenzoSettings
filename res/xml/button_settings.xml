@@ -61,6 +61,11 @@
             android:summary="@string/swap_volume_buttons_summary"
             android:defaultValue="false" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_rocker_wake"
+            android:summary="@string/volume_rocker_wake_summary"
+            android:title="@string/volume_rocker_wake_title" />
+
     <PreferenceCategory
         android:key="vol_dnd_category"
         android:title="@string/vol_dnd_category_title"/>
