@@ -199,6 +199,8 @@
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
     <string name="long_press_kill_delay">App kill delay</string>
 
+    <!-- Volume keys -->
+    <string name="vol_buttons_category_title">Volume buttons</string>
     <!-- Volume Steps Fragment -->
     <string name="volume_steps_fragment_title">Volume steps</string>
     <string name="volume_steps_summary">Customize volume steps</string>
@@ -210,6 +212,9 @@
     <string name="volume_steps_system_title">Volume steps: System</string>
     <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
     <string name="volume_steps_reset">Reset</string>
+    <!-- Volume swap buttons -->	
+    <string name="swap_volume_buttons_title">Reorient</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
 
     <!-- Lockscreen charging current indicator  -->
     <string name="lockscreen_charging_current_title">Charging info</string>
