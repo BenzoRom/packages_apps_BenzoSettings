@@ -237,6 +237,11 @@
     <string name="tab_size_title">Tab size</string>
     <string name="tab_size_summary">Change the size of the visible tab.</string>
 
+    <!-- Lockscreen notif count -->
+    <string name="lockscreen_maxnotif_title">Lockscreen notification count</string>
+    <string name="lockscreen_maxnotif_sumary">Enable adjustment of max lockscreen notifications</string>
+    <string name="lockscreen_maxnotif_config">Max lockscreen notifications</string>
+
     <!-- Lockscreen shortcuts -->
     <string name="lockscreen_shortcuts_category">Shortcuts</string>
     <string name="lockscreen_shortcuts_slim_title">Upper Shortcuts</string>
