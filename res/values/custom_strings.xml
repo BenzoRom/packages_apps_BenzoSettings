@@ -18,6 +18,7 @@
 
     <!-- General -->
     <string name="ok">Okay</string>
+    <string name="dlg_ok">Okay</string>
     <string name="default_string">Default</string>
     <string name="add">Add</string>
     <string name="enabled">Enabled</string>
@@ -451,5 +452,16 @@
     <string name="shortcut_picker_icon_type_system_title">System icons</string>
     <string name="shortcut_picker_select_system_icon_title">Select system icon:</string>
     <string name="shortcut_picker_icon_type_custom_title">Gallery</string>
+
+    <!-- Keyboard and IME  -->
+    <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
+    <string name="disable_fullscreen_keyboard_summary">Landscape keyboard will never take up entire screen</string>
+    <string name="keyboard_rotation_toggle_title">Auto keyboard rotation</string>
+    <string name="keyboard_rotation_toggle_summary">Force auto-rotate when keyboard is shown</string>
+    <string name="keyboard_rotation_timeout_title">Auto-rotate timeout</string>
+    <string name="keyboard_rotation_timeout_summary">Disables auto-rotate sensor <xliff:g id="rotate_timeout">%1$s</xliff:g> seconds after keyboard is hidden</string>
+    <string name="keyboard_rotation_dialog">This feature forces auto-rotate to turn on temporarily while the keyboard is shown.  It has no effect when auto-rotate is already enabled.</string>
+    <string name="show_enter_key_title">Show enter key</string>
+    <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
 
 </resources>
