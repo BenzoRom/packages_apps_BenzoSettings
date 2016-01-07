@@ -20,12 +20,6 @@
     android:title="@string/quicksettings_title" >
 
         <com.benzo.settings.preference.SecureSettingSwitchPreference
-            android:key="qs_show_brightness_slider"
-            android:title="@string/brightness_slider_title"
-            android:summary="@string/brightness_slider_summary"
-            android:defaultValue="true"/>
-
-        <com.benzo.settings.preference.SecureSettingSwitchPreference
             android:key="status_bar_locked_on_secure_keyguard"
             android:title="@string/block_on_secure_keyguard_title"
             android:summary="@string/block_on_secure_keyguard_summary"
@@ -81,5 +75,22 @@
             android:entries="@array/qs_tile_animation_interpolator_entries"
             android:entryValues="@array/qs_tile_animation_interpolator_values"
             android:persistent="false" />
+
+    <PreferenceCategory
+        android:key="quick_settings_brightness"
+        android:title="@string/brightness_cat"/>
+
+        <com.benzo.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/brightness_slider_title"
+            android:summary="@string/brightness_slider_summary"
+            android:defaultValue="true"/>
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_icon"
+            android:title="@string/brightness_icon_title"
+            android:summary="@string/brightness_icon_summary"
+            android:dependency="qs_show_brightness_slider"
+            android:defaultValue="false"/>
 
 </PreferenceScreen>

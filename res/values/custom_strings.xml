@@ -413,9 +413,12 @@
     <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 
-    <!-- Hide brightness slider -->
-    <string name="brightness_slider_title">Brightness slider</string>
-    <string name="brightness_slider_summary">Show the brightness slider underneath quick settings</string>
+    <!-- QS Brightness -->
+    <string name="brightness_cat">Brightness</string>
+    <string name="brightness_slider_title">Show slider</string>
+    <string name="brightness_slider_summary">Show the brightness slider above quick settings</string>
+    <string name="brightness_icon_title">Show icon</string>
+    <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
 
     <!-- Double-tap-to sleep -->
     <string name="double_tap_sleep_gesture_title">Double tap to sleep</string>
