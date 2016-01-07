@@ -190,8 +190,11 @@
     <string name="transparent_lockscreen_notification_title">Transparent notifications</string>
     <string name="transparent_lockscreen_notification_summary">Enable notifications with semi-transparent backgrounds on lockscreen</string>
 
-    <!-- Hide brightness slider -->
-    <string name="brightness_slider_title">Brightness slider</string>
-    <string name="brightness_slider_summary">Show the brightness slider underneath quick settings</string>
+    <!-- QS Brightness -->
+    <string name="brightness_cat">Brightness</string>
+    <string name="brightness_slider_title">Show slider</string>
+    <string name="brightness_slider_summary">Show the brightness slider above quick settings</string>
+    <string name="brightness_icon_title">Show icon</string>
+    <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
 
 </resources>
