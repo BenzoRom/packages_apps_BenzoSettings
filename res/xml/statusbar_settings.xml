@@ -51,4 +51,11 @@
             settings:units=""
             android:dependency="network_traffic_autohide" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="network_traffic_hidearrow"
+            android:title="@string/network_traffic_hidearrow"
+            android:summary="@string/network_traffic_hidearrow_summary"
+            android:dependency="network_traffic_state" />
+            android:defaultValue="false" />
+
 </PreferenceScreen>
