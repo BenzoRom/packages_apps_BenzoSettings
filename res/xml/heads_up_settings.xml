@@ -55,4 +55,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+            android:title="@string/heads_up_whitelist_title"
+            android:key="whitelist_applications"
+            android:dependency="heads_up_notifications_enabled" >
+        <Preference
+            android:key="add_whitelist_packages"
+            android:icon="@drawable/ic_menu_add"
+            android:title="@string/add_heads_up_package"
+            android:summary="@string/add_heads_up_whitelist_summary" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
