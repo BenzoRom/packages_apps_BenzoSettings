@@ -747,4 +747,8 @@
     <string name="show_carrier_statusbar">Statusbar only</string>
     <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
 
+    <!-- Lockscreen rotation -->
+    <string name="lockscreen_rotation_title">Enable rotation</string>
+    <string name="lockscreen_rotation_summary">Allow locksreen to roate when moving phone</string>
+
 </resources>

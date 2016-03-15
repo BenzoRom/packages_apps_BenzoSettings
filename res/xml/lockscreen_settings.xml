@@ -32,6 +32,12 @@
                android:defaultValue="false" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
+               android:key="lockscreen_rotation"
+               android:title="@string/lockscreen_rotation_title"
+               android:summary="@string/lockscreen_rotation_summary"
+               android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
                android:key="lock_screen_custom_notif"
                android:title="@string/lockscreen_maxnotif_title"
                android:summary="@string/lockscreen_maxnotif_sumary"
