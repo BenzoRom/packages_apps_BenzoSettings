@@ -51,6 +51,12 @@
         android:summary="@string/double_tap_sleep_lockscreen_sumary"
         android:defaultValue="false" />
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="lockscreen_rotation"
+        android:title="@string/lockscreen_rotation_title"
+        android:summary="@string/lockscreen_rotation_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/lockscreen_fingerprint_category"/>
 

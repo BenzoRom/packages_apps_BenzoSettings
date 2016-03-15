@@ -425,4 +425,8 @@
     <string name="double_tap_sleep_lockscreen_title">Double tap to sleep</string>
     <string name="double_tap_sleep_lockscreen_sumary">Double tap anywhere on the lockscreen to put phone to sleep</string>
 
+    <!-- Lockscreen rotation -->
+    <string name="lockscreen_rotation_title">Enable rotation</string>
+    <string name="lockscreen_rotation_summary">Allow locksreen to roate when moving phone</string>
+
 </resources>
