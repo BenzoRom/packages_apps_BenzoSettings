@@ -18,7 +18,9 @@ package com.benzo.settings;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
@@ -39,6 +41,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String KEY_SCREEN_RECORD_QUALITY = "screen_record_quality";
+    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
+
+    private ListPreference mTileAnimationStyle;
+    private ListPreference mTileAnimationDuration;
 
     private ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
@@ -71,6 +78,24 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mScreenRecordQuality.setValue(Integer.toString(screenRecordQuality));
         mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntry());
         mScreenRecordQuality.setOnPreferenceChangeListener(this);
+
+        // QS animation
+        mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
+        int tileAnimationStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_STYLE, 0,
+                UserHandle.USER_CURRENT);
+        mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
+        updateTileAnimationStyleSummary(tileAnimationStyle);
+        updateAnimTileDuration(tileAnimationStyle);
+        mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+        mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
+        int tileAnimationDuration = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_DURATION, 2000,
+                UserHandle.USER_CURRENT);
+        mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
+        updateTileAnimationDurationSummary(tileAnimationDuration);
+        mTileAnimationDuration.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -92,6 +117,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int index = mScreenRecordQuality.findIndexOfValue((String) newValue);
             mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntries()[index]);
             Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_RECORD_QUALITY, value);
+            return true;
+        } else if (preference == mTileAnimationStyle) {
+            int tileAnimationStyle = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_STYLE,
+                    tileAnimationStyle, UserHandle.USER_CURRENT);
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileDuration(tileAnimationStyle);
+            return true;
+       } else if (preference == mTileAnimationDuration) {
+            int tileAnimationDuration = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_DURATION,
+                    tileAnimationDuration, UserHandle.USER_CURRENT);
+            updateTileAnimationDurationSummary(tileAnimationDuration);
             return true;
         }
         return false;
@@ -130,9 +168,30 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
+        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
+                .valueOf(tileAnimationStyle))];
+        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
+    }
+
+    private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
+        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
+                .valueOf(tileAnimationDuration))];
+        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
+    }
+
+    private void updateAnimTileDuration(int tileAnimationStyle) {
+        if (mTileAnimationDuration != null) {
+            if (tileAnimationStyle == 0) {
+                mTileAnimationDuration.setSelectable(false);
+            } else {
+                mTileAnimationDuration.setSelectable(true);
+            }
+        }
+    }
+
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.BENZO;
     }
-
 }
