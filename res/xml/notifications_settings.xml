@@ -19,12 +19,18 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notifications_settings_benzo_title" >
 
-        <Preference
-                android:title="@string/power_notifications_title"
-                android:summary="@string/power_notifications_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.systemui"
-                    android:targetClass="com.android.systemui.tuner.PowerNotificationsTunerActivity" />
-        </Preference>
+    <Preference
+        android:title="@string/power_notifications_title"
+        android:summary="@string/power_notifications_summary">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.PowerNotificationsTunerActivity" />
+    </Preference>
+
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="toast_icon"
+        android:title="@string/toast_icon_title"
+        android:summary="@string/toast_icon_summary"
+        android:defaultValue="false" />
 
 </PreferenceScreen>
