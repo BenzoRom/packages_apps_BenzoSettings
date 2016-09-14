@@ -145,4 +145,30 @@
             android:entryValues="@array/clock_date_format_entries_values"
             android:dependency="clock_date_display" />
 
+     <PreferenceCategory
+         android:key="nettraffic_settings"
+         android:title="@string/nettraffic_settings_title"/>
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="network_traffic_autohide"
+            android:title="@string/network_traffic_autohide"
+            android:summary="@string/network_traffic_autohide_summary"
+            android:dependency="network_traffic_state"
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSeekBarPreference
+            android:key="network_traffic_autohide_threshold"
+            android:title="@string/network_traffic_autohide_threshold_title"
+            android:max="10"
+            android:min="0"
+            benzo:unitsLeft=""
+            benzo:unitsRight=""
+            android:defaultValue="0"
+            android:dependency="network_traffic_state" />
+
 </PreferenceScreen>
