@@ -15,30 +15,65 @@
  */
 package com.benzo.settings;
 
+import android.content.ContentResolver;
+import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.net.TrafficStats;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
+import android.util.Log;
+
+import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.android.internal.logging.nano.MetricsProto;
+import com.benzo.settings.preference.CustomSeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSwitchPreference;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class StatusbarSettings extends SettingsPreferenceFragment {
+public class StatusbarSettings extends SettingsPreferenceFragment implements
+	OnPreferenceChangeListener  {
+
+    private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+
+    private CustomSeekBarPreference mNetTrafficAutohideThreshold;
+    private SystemSettingSwitchPreference mNetMonitor;
+    private SystemSettingSwitchPreference mNetTrafficAutohide;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.statusbar_settings);
-        PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
 
+        boolean isNetMonitorEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
+        mNetMonitor = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_STATE);
+        mNetMonitor.setChecked(isNetMonitorEnabled);
+        mNetMonitor.setOnPreferenceChangeListener(this);
+
+        mNetTrafficAutohide =
+            (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE);
+        mNetTrafficAutohide.setChecked((Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1));
+        mNetTrafficAutohide.setOnPreferenceChangeListener(this);
+
+        mNetTrafficAutohideThreshold = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+        int netTrafficAutohideThreshold = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
+        mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold);
+        mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -46,4 +81,40 @@ public class StatusbarSettings extends SettingsPreferenceFragment {
         return MetricsProto.MetricsEvent.BENZO;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void updateNetworkTrafficState(boolean value) {
+        if (!value) {
+            mNetTrafficAutohide.setEnabled(false);
+            mNetTrafficAutohideThreshold.setEnabled(false);
+        } else {
+            mNetTrafficAutohide.setEnabled(true);
+            mNetTrafficAutohideThreshold.setEnabled(true);
+        }
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mNetMonitor) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            updateNetworkTrafficState(value);
+            return true;
+        } else if (preference == mNetTrafficAutohide) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE, value ? 1 : 0);
+            return true;
+        } else if (preference == mNetTrafficAutohideThreshold) {
+            int threshold = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, threshold * 1);
+            return true;
+        }
+        return false;
+    }
 }

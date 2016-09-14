@@ -27,4 +27,28 @@
                 android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
     </Preference>
 
+     <PreferenceCategory
+         android:key="nettraffic_settings"
+         android:title="@string/nettraffic_settings_title"/>
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:defaultValue="true" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="network_traffic_autohide"
+            android:title="@string/network_traffic_autohide"
+            android:summary="@string/network_traffic_autohide_summary"
+            android:dependency="network_traffic_state" />
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.CustomSeekBarPreference
+            android:key="network_traffic_autohide_threshold"
+            android:title="@string/network_traffic_autohide_threshold_title"
+            android:max="10"
+            settings:min="0"
+            settings:units=""
+            android:dependency="network_traffic_autohide" />
+
 </PreferenceScreen>
