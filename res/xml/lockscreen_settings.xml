@@ -19,4 +19,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lock_screen_settings_title" >
 
+    <com.benzo.settings.preference.SecureSettingSwitchPreference
+        android:key="lockscreen_visualizer_enabled"
+        android:title="@string/lockscreen_visualizer_title"
+        android:summary="@string/lockscreen_visualizer_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
