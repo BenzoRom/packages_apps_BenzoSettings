@@ -163,4 +163,8 @@
     <string name="torch_power_button_gesture_title">Screen-off torch</string>
     <string name="torch_power_button_gesture_summary">Longpress power button with screen off turns on torch</string>
 
+    <!-- Lock screen visualizer -->
+    <string name="lockscreen_visualizer_title">Show music visualizer</string>
+    <string name="lockscreen_visualizer_summary">Show colored visualizer on lockscreen when music is playing</string>
+
 </resources>
