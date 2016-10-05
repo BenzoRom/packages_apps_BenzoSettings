@@ -60,6 +60,8 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
 
+    private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+
     private SystemSettingSwitchPreference mStatusBarClockShow;
     private SystemSettingSwitchPreference mStatusBarSecondsShow;
     private ListPreference mStatusBarClock;
@@ -67,6 +69,8 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mClockDateDisplay;
     private ListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
+
+    private ListPreference mStatusBarBattery;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -133,8 +137,15 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         } else {
             mClockDateFormat.setValue(value);
         }
-
         parseClockDateFormats();
+
+	// Battery styles
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
+        int batteryStyle = Settings.Secure.getInt(resolver,
+                Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -239,6 +250,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                         Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
             }
+            return true;
+        } else if (preference == mStatusBarBattery) {
+            int clockStyle = Integer.valueOf((String) newValue);
+            int index = mStatusBarBattery.findIndexOfValue((String) newValue);
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, clockStyle);
+            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
             return true;
       }
       return false;
