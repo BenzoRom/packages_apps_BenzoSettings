@@ -163,4 +163,10 @@
     <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
     <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
 
+    <!--SystemUI Tuner -->
+    <string name="statusbar_tuner_title">Statusbar items</string>
+    <string name="statusbar_tuner_summary">Battery options and statusbar icons to disable</string>
+    <string name="lockscreen_shortcuts_title">Lockscreen shortcuts</string>
+    <string name="lockscreen_shortcuts_summary">Manage lockscreen bottom shortcuts</string>
+
 </resources>
