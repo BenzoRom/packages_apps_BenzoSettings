@@ -106,4 +106,8 @@
     <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
     <string name="volume_steps_reset">Reset</string>
 
+    <!--SystemUI Tuner -->
+    <string name="statusbar_tuner_title">Statusbar Items</string>
+    <string name="statusbar_tuner_summary">Select which statusbar icons to disable</string>
+
 </resources>
