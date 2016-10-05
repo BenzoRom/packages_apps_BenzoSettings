@@ -70,12 +70,12 @@
             />
 
        <!-- Notifications -->
-       <!--Preference
+       <Preference
             android:key="benzo_notifications_category"
             android:fragment="com.benzo.settings.Notifications"
             android:title="@string/notifications_settings_benzo_title" 
             android:layout="@layout/preference_benzoextra_notifications"
-            /-->
+            />
 
         <!-- Recents -->
         <Preference
@@ -94,11 +94,11 @@
             />
 
         <!-- Status Bar -->
-        <!--Preference
+        <Preference
             android:key="statusbar_settings"
             android:title="@string/statusbar_settings_title"
             android:fragment="com.benzo.settings.StatusbarSettings" 
             android:layout="@layout/preference_benzoextra_statusbar" 
-            /-->
+            />
 
 </PreferenceScreen>
