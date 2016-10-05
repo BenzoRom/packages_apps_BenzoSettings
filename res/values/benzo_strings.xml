@@ -136,4 +136,8 @@
     <string name="battery_percent_title">Show percent</string>
     <string name="battery_percent_summary">Always show the battery percent with the icon</string>
 
+    <!--SystemUI Tuner -->
+    <string name="statusbar_tuner_title">Statusbar items</string>
+    <string name="statusbar_tuner_summary">Select which icons to hide in the statusbar</string>
+
 </resources>
