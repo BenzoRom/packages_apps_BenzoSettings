@@ -24,6 +24,8 @@
     <string name="statusbar_settings_title">Statusbar</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="app_ops_settings_title">App Ops</string>
+    <string name="notifications_settings_benzo_title">Notifications</string>
+    <string name="lockscreen_settings_benzo_title">Lockscreen</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
@@ -123,5 +125,22 @@
     <string name="hide_apps_from_recents_title">Hide apps from recents</string>
     <string name="hide_from_recents_add_app">Add App</string>
     <string name="hide_apps_from_recents_summary">Select certian apps to hide in recents</string>
+
+    <!--SystemUI Tuner -->
+    <string name="statusbar_tuner_title">Statusbar items</string>
+    <string name="statusbar_tuner_summary">Battery options and statusbar icons to disable</string>
+    <string name="navbar_tuner_title">Edit navigation bar</string>
+    <string name="navbar_tuner_summary">Edit the navigation bar layout and buttons</string>
+    <string name="lockscreen_shortcuts_title">Lockscreen shortcuts</string>
+    <string name="lockscreen_shortcuts_summary">Manage lockscreen bottom shortcuts</string>
+    <string name="power_notifications_title">Power notifications</string>
+    <string name="power_notifications_summary">Advanced notifications control on long press</string>
+    <string name="vol_dnd_category_title">Do not disturb mode</string>
+    <string name="volbtn_down_zen_title">Volume down for do not disturb</string>
+    <string name="volbtn_down_zen_summary">allow volume down to enter do not disturb mode</string>
+    <string name="volbtn_up_zen_title">Volume up in do not disturb</string>
+    <string name="volbtn_up_zen_summary">allow volume up to exit do not disturb mode</string>
+    <string name="vol_zen_title">Do not disturb switch</string>
+    <string name="vol_zen_summary">Show do not disturb swith on volume panel</string>
 
 </resources>
