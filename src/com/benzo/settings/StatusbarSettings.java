@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.net.TrafficStats;
@@ -33,7 +34,10 @@ import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
+import android.text.Spannable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -51,7 +55,7 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import java.util.Date;
 
 public class StatusbarSettings extends SettingsPreferenceFragment implements
-	OnPreferenceChangeListener  {
+	Preference.OnPreferenceChangeListener  {
 
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
     private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
@@ -70,6 +74,9 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
 
+    private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
+    private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+
     private CustomSeekBarPreference mNetTrafficAutohideThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mNetTrafficAutohide;
@@ -83,6 +90,10 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mClockDateDisplay;
     private ListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
+
+    private PreferenceScreen mCustomCarrierLabel;
+    private ListPreference mShowCarrierLabel;
+    private String mCustomCarrierLabelText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -173,8 +184,18 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         if (mClockDateFormat.getValue() == null) {
             mClockDateFormat.setValue("EEE");
         }
-
         parseClockDateFormats();
+
+        // custom carrier label
+        mShowCarrierLabel = (ListPreference) findPreference(SHOW_CARRIER_LABEL);
+        int showCarrierLabel = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_CARRIER, 1);
+        mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
+        mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
+        mShowCarrierLabel.setOnPreferenceChangeListener(this);
+
+        mCustomCarrierLabel = (PreferenceScreen) findPreference(CUSTOM_CARRIER_LABEL);
+        updateCustomLabelTextSummary();
     }
 
     @Override
@@ -325,8 +346,45 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                 }
             }
             return true;
+        } else if (preference == mShowCarrierLabel) {
+            int showCarrierLabel = Integer.valueOf((String) newValue);
+            int index = mShowCarrierLabel.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_CARRIER, showCarrierLabel);
+            mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
+            return true;
       }
       return false;
+    }
+
+    public boolean onPreferenceTreeClick(Preference preference) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        boolean value;
+        if (preference.getKey().equals(CUSTOM_CARRIER_LABEL)) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+            alert.setTitle(R.string.custom_carrier_label_title);
+            alert.setMessage(R.string.custom_carrier_label_explain);
+            // Set an EditText view to get user input
+            final EditText input = new EditText(getActivity());
+            input.setText(TextUtils.isEmpty(mCustomCarrierLabelText) ? "" : mCustomCarrierLabelText);
+            input.setSelection(input.getText().length());
+            alert.setView(input);
+            alert.setPositiveButton(getString(android.R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            String value = ((Spannable) input.getText()).toString().trim();
+                            Settings.System.putString(resolver, Settings.System.CUSTOM_CARRIER_LABEL, value);
+                            updateCustomLabelTextSummary();
+                            Intent i = new Intent();
+                            i.setAction(Intent.ACTION_CUSTOM_CARRIER_LABEL_CHANGED);
+                            getActivity().sendBroadcast(i);
+                }
+            });
+            alert.setNegativeButton(getString(android.R.string.cancel), null);
+            alert.show();
+            return true;
+        }
+        return false;
     }
 
     private void parseClockDateFormats() {
@@ -358,4 +416,15 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         }
         mClockDateFormat.setEntries(parsedDateEntries);
     }
+
+    private void updateCustomLabelTextSummary() {
+        mCustomCarrierLabelText = Settings.System.getString(
+            getContentResolver(), Settings.System.CUSTOM_CARRIER_LABEL);
+        if (TextUtils.isEmpty(mCustomCarrierLabelText)) {
+            mCustomCarrierLabel.setSummary(R.string.custom_carrier_label_notset);
+        } else {
+            mCustomCarrierLabel.setSummary(mCustomCarrierLabelText);
+        }
+    }
+
 }
