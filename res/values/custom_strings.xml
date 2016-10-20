@@ -437,4 +437,8 @@
     <string name="torch_power_button_gesture_dt_toast">Jump to camera gesture is now disabled</string>
     <string name="torch_power_button_gesture_lp">Long press power button</string>
 
+    <!-- Navigation bar arrow keys -->
+    <string name="show_navbar_arrow_keys_title">Show arrow keys while typing</string>
+    <string name="show_navbar_arrow_keys_summary">Display left and right cursor buttons in navigation bar while typing.</string>
+
 </resources>
