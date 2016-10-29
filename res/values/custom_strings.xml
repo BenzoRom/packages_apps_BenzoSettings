@@ -239,4 +239,8 @@
     <string name="toast_icon_title">Toast app icon</string>
     <string name="toast_icon_summary">Display the app\'s icon corresponding with the toast</string>
 
+    <!-- Pin ripple -->
+    <string name="lockscreen_pin_ripple_title">Pin Ripple</string>
+    <string name="lockscreen_pin_ripple_summary">Disable to remove ripple when entering pin numbers</string>
+
 </resources>
