@@ -52,6 +52,12 @@
             android:summary="@string/media_art_summary"
             android:defaultValue="true" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_pin_ripple"
+            android:title="@string/lockscreen_pin_ripple_title"
+            android:summary="@string/lockscreen_pin_ripple_summary"
+            android:defaultValue="true" />
+
      <PreferenceCategory
          android:key="locksystem_category"
          android:title="@string/lockscreen_shortcuts_category"/>
