@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017 Benzo Rom
+     Copyright (C) 2018 Benzo Rom
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,18 +17,13 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/notifications_settings_benzo_title" >
+    android:title="@string/heads_up_cat_title" >
 
-    <Preference
-        android:key="heads_up_settings"
-        android:title="@string/heads_up_cat_title"
-        android:summary="@string/heads_up_cat_summary"
-        android:fragment="com.benzo.settings.headsup.HeadsUpSettings" />
-
-    <com.benzo.settings.preference.SystemSettingSwitchPreference
-        android:key="toast_icon"
-        android:title="@string/toast_icon_title"
-        android:summary="@string/toast_icon_summary"
-        android:defaultValue="false" />
+    <ListPreference
+        android:key="heads_up_time_out"
+        android:title="@string/heads_up_time_out_title"
+        android:entries="@array/heads_up_time_out_entries"
+        android:entryValues="@array/heads_up_time_out_values"
+        android:persistent="false" />
 
 </PreferenceScreen>
