@@ -36,12 +36,12 @@
             />
 
         <!-- Recents -->
-        <!--Preference
+        <Preference
             android:key="recents_settings"
             android:title="@string/recents_settings_title"
             android:fragment="com.benzo.settings.RecentsSettings"
             android:layout="@layout/preference_benzoextra_recents"
-            /-->
+            />
 
         <!-- Status Bar -->
         <!--Preference
