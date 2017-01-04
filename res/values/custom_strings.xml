@@ -23,4 +23,8 @@
     <string name="recents_settings_title">Recents</string>
     <string name="statusbar_settings_title">Statusbar</string>
 
+    <!-- Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Requires a config change(display size, navbar position, reboot) themes may overwrite</string>
+
 </resources>
