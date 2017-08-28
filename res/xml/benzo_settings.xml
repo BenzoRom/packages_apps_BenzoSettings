@@ -19,4 +19,13 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/benzo_settings_title" >
 
+    <!-- Power Menu -->
+    <Preference
+        android:key="@+id/global_actions"
+        android:title="@string/benzo_settings_power_menu_title"
+        android:layout="@layout/preference_benzosettings_main"
+        android:icon="@drawable/ic_settings_global_actions"
+        android:fragment="com.benzorom.settings.GlobalActionsSettings"
+	/>
+
 </PreferenceScreen>
