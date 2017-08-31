@@ -633,4 +633,8 @@
     <string name="onthego_alpha_title">On-The-Go Alpha</string>
     <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay.</string>
 
+    <!-- DoubleTap2Sleep -->
+    <string name="double_tap_sleep_navbar_title">Double tap to sleep</string>
+    <string name="double_tap_sleep_navbar_summary">Double tap on the navigation bar to put phone to sleep</string>
+
 </resources>

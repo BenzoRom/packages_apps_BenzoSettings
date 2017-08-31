@@ -48,6 +48,12 @@
                 android:targetClass="com.android.systemui.tuner.NavBarTunerActivity" />
     </Preference>
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_navbar"
+        android:title="@string/double_tap_sleep_navbar_title"
+        android:summary="@string/double_tap_sleep_navbar_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="navigation_other"
         android:title="@string/navigation_other_category"/>
