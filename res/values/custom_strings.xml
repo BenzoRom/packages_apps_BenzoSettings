@@ -636,5 +636,7 @@
     <!-- DoubleTap2Sleep -->
     <string name="double_tap_sleep_navbar_title">Double tap to sleep</string>
     <string name="double_tap_sleep_navbar_summary">Double tap on the navigation bar to put phone to sleep</string>
+    <string name="double_tap_sleep_lockscreen_title">Double tap to sleep</string>
+    <string name="double_tap_sleep_lockscreen_sumary">Double tap anywhere on the lockscreen to put phone to sleep</string>
 
 </resources>

@@ -20,6 +20,12 @@
     android:title="@string/lockscreen_settings_benzo_title" >
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
+               android:key="double_tap_sleep_lockscreen"
+               android:title="@string/double_tap_sleep_lockscreen_title"
+               android:summary="@string/double_tap_sleep_lockscreen_sumary"
+               android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
                android:key="lock_screen_custom_notif"
                android:title="@string/lockscreen_maxnotif_title"
                android:summary="@string/lockscreen_maxnotif_sumary"
