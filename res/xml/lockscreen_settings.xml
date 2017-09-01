@@ -45,6 +45,12 @@
                 android:targetClass="com.android.systemui.tuner.LockscreenTunerActivity" />
     </Preference>
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_lockscreen"
+        android:title="@string/double_tap_sleep_lockscreen_title"
+        android:summary="@string/double_tap_sleep_lockscreen_sumary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/lockscreen_fingerprint_category"/>
 
