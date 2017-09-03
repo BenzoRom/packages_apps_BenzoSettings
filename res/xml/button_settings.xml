@@ -35,6 +35,12 @@
             android:summary="@string/global_actions_summary"
             android:fragment="com.benzo.settings.GlobalActionsSettings" />
 
+    <ListPreference
+        android:key="torch_power_button_gesture"
+        android:title="@string/torch_power_button_gesture_title"
+        android:entries="@array/torch_power_button_gesture_entries"
+        android:entryValues="@array/torch_power_button_gesture_values" />
+
     <PreferenceCategory
         android:key="volume_button_category"
         android:title="@string/volume_button_category_title" />
