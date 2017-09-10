@@ -20,6 +20,12 @@
     android:title="@string/navbar_settings_title" >
 
     <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="navigation_bar_show"
+        android:title="@string/enable_navigation_bar_title"
+        android:summary="@string/enable_navigation_bar_summary"
+        android:defaultValue="true" />
+
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
         android:key="pixel_nav_animation"
         android:title="@string/pixel_navbar_anim_title"
         android:summary="@string/pixel_navbar_anim_summary"
