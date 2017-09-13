@@ -14,10 +14,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/quicksettings_title" >
 
-    <!-- Benzo Extras -->
-    <string name="benzo_settings_title">Benzo Extras</string>
-    <string name="quicksettings_title">Quick Settings</string>
-
-</resources>
+</PreferenceScreen>

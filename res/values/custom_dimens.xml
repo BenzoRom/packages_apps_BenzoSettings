@@ -16,8 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Benzo Extras -->
-    <string name="benzo_settings_title">Benzo Extras</string>
-    <string name="quicksettings_title">Quick Settings</string>
+    <!-- Dashboard tile minimum height -->
+    <dimen name="dashboard_tile_minimum_height">72dp</dimen>
+
+    <!-- Dashboard tile image margin start / end -->
+    <dimen name="dashboard_tile_image_margin">18dp</dimen>
 
 </resources>
