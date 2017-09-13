@@ -18,6 +18,8 @@
 
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
+    <string name="button_settings_title">Buttons</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
     <!-- General -->
     <string name="ok">Okay</string>

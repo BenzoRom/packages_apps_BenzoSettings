@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2021 Benzo Rom
+     Copyright (C) 2020 Benzo Rom
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,24 +17,6 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/benzo_settings_title" >
-
-    <!-- Buttons -->
-    <Preference
-        android:key="@+id/button_settings"
-        android:title="@string/button_settings_title"
-        android:layout="@layout/preference_benzosettings_main"
-        android:icon="@drawable/ic_settings_buttons"
-        android:fragment="com.benzo.settings.ButtonSettings"
-        />
-
-    <!-- Quick Settings -->
-    <Preference
-        android:id="@+id/quick_settings"
-        android:title="@string/quicksettings_title"
-        android:layout="@layout/preference_benzosettings_main"
-        android:icon="@drawable/ic_settings_quicksettings"
-        android:fragment="com.benzo.settings.QuickSettings"
-        />
+    android:title="@string/quicksettings_title" >
 
 </PreferenceScreen>
