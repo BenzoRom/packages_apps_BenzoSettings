@@ -17,14 +17,6 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/benzo_settings_title" >
-
-        <!-- Quick Settings -->
-        <Preference
-            android:id="@+id/quick_settings"
-            android:title="@string/quicksettings_title"
-            android:fragment="com.benzo.settings.QuickSettings"
-            android:layout="@layout/preference_benzoextra_quicksettings"
-            />
+    android:title="@string/quicksettings_title" >
 
 </PreferenceScreen>

@@ -14,17 +14,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/benzo_settings_title" >
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-        <!-- Quick Settings -->
-        <Preference
-            android:id="@+id/quick_settings"
-            android:title="@string/quicksettings_title"
-            android:fragment="com.benzo.settings.QuickSettings"
-            android:layout="@layout/preference_benzoextra_quicksettings"
-            />
+    <style name="TextAppearance.TileTitle" parent="@*android:style/TextAppearance.DeviceDefault.Subhead"/>
 
-</PreferenceScreen>
+</resources>
