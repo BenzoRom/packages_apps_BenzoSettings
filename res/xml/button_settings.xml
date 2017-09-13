@@ -32,10 +32,10 @@
         android:defaultValue="true" />
 
     <com.benzo.settings.preference.SystemSettingSwitchPreference
-        android:key="lockscreen_enable_power_menu"
-        android:title="@string/lockscreen_enable_power_menu_title"
-        android:summary="@string/lockscreen_enable_power_menu_summary"
-        android:defaultValue="true" />
+        android:key="lockscreen_power_menu_disabled"
+        android:title="@string/lockscreen_disabled_power_menu_title"
+        android:summary="@string/lockscreen_disabled_power_menu_summary"
+        android:defaultValue="false" />
 
     <PreferenceCategory
         android:key="vol_buttons_category"
