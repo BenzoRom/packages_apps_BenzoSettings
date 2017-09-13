@@ -22,6 +22,7 @@
     <string name="navbar_settings_title">Navigation Bar</string>
     <string name="recents_settings_title">Recents</string>
     <string name="statusbar_settings_title">Statusbar</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
