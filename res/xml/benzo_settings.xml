@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2017 Benzo Rom
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/benzo_settings_title" >
+
+        <!-- Buttons -->
+        <!--Preference
+            android:key="button_settings"
+            android:title="@string/button_settings_title"
+            android:fragment="com.benzo.settings.ButtonSettings"
+	    android:layout="@layout/preference_benzoextra_buttons"
+	    /-->
+
+        <!-- Navigation Bar -->
+        <Preference
+            android:key="navbar_settings"
+            android:title="@string/navbar_settings_title" 
+            android:fragment="com.benzo.settings.NavbarSettings"
+            android:layout="@layout/preference_benzoextra_navbar"
+            />
+
+        <!-- Recents -->
+        <!--Preference
+            android:key="recents_settings"
+            android:title="@string/recents_settings_title"
+            android:fragment="com.benzo.settings.RecentsSettings"
+            android:layout="@layout/preference_benzoextra_recents"
+            /-->
+
+        <!-- Status Bar -->
+        <!--Preference
+            android:key="statusbar_settings"
+            android:title="@string/statusbar_settings_title"
+            android:fragment="com.benzo.settings.StatusbarSettings" 
+            android:layout="@layout/preference_benzoextra_statusbar" 
+            /-->
+
+</PreferenceScreen>
