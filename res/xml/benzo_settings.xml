@@ -19,6 +19,15 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/benzo_settings_title" >
 
+    <!-- Buttons -->
+    <Preference
+        android:key="@+id/button_settings"
+        android:title="@string/button_settings_title"
+        android:layout="@layout/preference_benzosettings_main"
+        android:icon="@drawable/ic_settings_buttons"
+        android:fragment="com.benzorom.settings.ButtonSettings"
+        />
+
     <!-- Power Menu -->
     <Preference
         android:key="@+id/global_actions"
@@ -27,5 +36,14 @@
         android:icon="@drawable/ic_settings_global_actions"
         android:fragment="com.benzorom.settings.GlobalActionsSettings"
 	/>
+
+    <!-- Quick Settings -->
+    <Preference
+        android:id="@+id/quick_settings"
+        android:title="@string/quicksettings_title"
+        android:layout="@layout/preference_benzosettings_main"
+        android:icon="@drawable/ic_settings_quicksettings"
+        android:fragment="com.benzorom.settings.QuickSettings"
+        />
 
 </PreferenceScreen>

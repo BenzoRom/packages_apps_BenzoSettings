@@ -19,7 +19,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/benzo_settings_power_menu_title" >
 
-    <com.benzo.settings.preference.SecureSettingSwitchPreference
+    <com.benzorom.settings.preference.SecureSettingSwitchPreference
         android:key="advanced_reboot"
         android:title="@string/global_actions_advanced_reboot_title"
         android:summary="@string/global_actions_advanced_reboot_summary"
@@ -28,47 +28,47 @@
     <PreferenceCategory
         android:title="@string/global_actions_menu_category"/>
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_screenshot"
             android:title="@string/global_actions_screenshot"
             android:defaultValue="false" />
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_screenrecord"
             android:title="@string/global_actions_screenrecord"
             android:defaultValue="false" />
 
-        <!--com.benzo.settings.preference.SystemSettingSwitchPreference
+        <!--com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_airplane"
             android:title="@string/global_actions_airplane"
             android:defaultValue="false" /-->
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_settings"
             android:title="@string/global_actions_settings"
             android:defaultValue="false" />
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_lockdown"
             android:title="@string/global_actions_lockdown"
             android:defaultValue="false" />
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_flashlight"
             android:title="@string/global_actions_flashlight"
             android:defaultValue="false" />
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_users"
             android:title="@string/global_actions_users"
             android:defaultValue="false" />
 
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
+        <com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_emergency"
             android:title="@string/global_actions_emergency"
             android:defaultValue="false" />
 
-        <!--com.benzo.settings.preference.SystemSettingSwitchPreference
+        <!--com.benzorom.settings.preference.SystemSettingSwitchPreference
             android:key="global_actions_soundpanel"
             android:title="@string/global_actions_soundpanel"
             android:defaultValue="false" /-->
@@ -77,7 +77,7 @@
         android:title="@string/global_actions_columns_rows_title"
         android:summary="@string/global_actions_columns_rows_summary"/>
 
-        <com.benzo.settings.preference.SystemSettingSeekBarPreference
+        <com.benzorom.settings.preference.SystemSettingSeekBarPreference
             android:key="global_actions_max_columns"
             android:title="@string/global_actions_max_columns_title"
             android:summary="@string/global_actions_max_columns_summary"
@@ -85,7 +85,7 @@
             android:min="1"
             android:defaultValue="2"/>
 
-        <com.benzo.settings.preference.SystemSettingSeekBarPreference
+        <com.benzorom.settings.preference.SystemSettingSeekBarPreference
             android:key="global_actions_max_rows"
             android:title="@string/global_actions_max_rows_title"
             android:summary="@string/global_actions_max_rows_summary"
