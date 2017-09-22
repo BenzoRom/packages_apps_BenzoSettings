@@ -45,6 +45,14 @@
 	    android:layout="@layout/preference_benzoextra_buttons"
 	    />
 
+        <!-- Keyboard -->
+        <Preference
+            android:key="inputmethod_settings"
+            android:fragment="com.benzo.settings.InputMethodsSettings"
+            android:title="@string/keyboard_ime_title"
+            android:layout="@layout/preference_benzoextra_inputmethod"
+            />
+
         <!-- Navigation Bar -->
         <Preference
             android:key="navbar_settings"
