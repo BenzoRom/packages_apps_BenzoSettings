@@ -19,6 +19,22 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/benzo_settings_title" >
 
+        <!-- Buttons -->
+        <Preference
+            android:key="button_settings"
+            android:title="@string/button_settings_title"
+            android:fragment="com.benzo.settings.ButtonSettings"
+	    android:layout="@layout/preference_benzoextra_buttons"
+	    />
+
+        <!-- Keyboard -->
+        <Preference
+            android:key="inputmethod_settings"
+            android:title="@string/keyboard_ime_title"
+            android:fragment="com.benzo.settings.InputMethodsSettings"
+            android:layout="@layout/preference_benzoextra_inputmethod"
+            />
+
         <!-- Quick Settings -->
         <PreferenceScreen
             android:id="@+id/quick_settings"
