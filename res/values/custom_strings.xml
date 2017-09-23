@@ -348,4 +348,9 @@
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
 
+    <!-- Lockscreen fingerprint -->
+    <string name="lockscreen_fingerprint_category">Fingerprint</string>
+    <string name="fprint_sucess_vib_title">Vibration when unlocking</string>
+    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
+
 </resources>
