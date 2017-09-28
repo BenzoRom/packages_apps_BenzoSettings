@@ -31,7 +31,7 @@
                android:summary="@string/lockscreen_maxnotif_sumary"
                android:defaultValue="false" />
 
-        <com.android.settings.widget.SeekBarPreference
+        <com.benzo.settings.preference.CustomSeekBarPreference
                android:key="lockscreen_max_notif_cofig"
                android:title="@string/lockscreen_maxnotif_config"
                android:max="8"

@@ -35,6 +35,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.widget.SeekBarPreference;
 
+import com.benzo.settings.preference.CustomSeekBarPreference;
 import com.android.internal.logging.nano.MetricsProto;
 
 public class LockScreenSettings extends SettingsPreferenceFragment implements
@@ -45,7 +46,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
 
     private ListPreference mLockscreenShortcutsLaunchType;
-    private SeekBarPreference mMaxKeyguardNotifConfig;
+    private CustomSeekBarPreference mMaxKeyguardNotifConfig;
 
     @Override
     public int getMetricsCategory() {
@@ -60,10 +61,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mMaxKeyguardNotifConfig = (SeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
+        mMaxKeyguardNotifConfig = (CustomSeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
         int kgconf = Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
-        mMaxKeyguardNotifConfig.setProgress(kgconf);
+        mMaxKeyguardNotifConfig.setValue(kgconf);
         mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
 
         mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
