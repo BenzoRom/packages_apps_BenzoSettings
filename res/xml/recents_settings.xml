@@ -28,6 +28,11 @@
                  android:targetClass="com.benzo.settings.hideappfromrecents.HAFRAppListActivity" />
      </Preference>
 
+     <Preference
+        android:key="recents_icon_pack"
+        android:title="@string/recents_icon_pack_title"
+        android:summary="@string/recents_icon_pack_summary" />
+
      <com.benzo.settings.preference.SystemSettingSwitchPreference
          android:key="systemui_recents_mem_display"
          android:title="@string/recents_show_membar_title"
