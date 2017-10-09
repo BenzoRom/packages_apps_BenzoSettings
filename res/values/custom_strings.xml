@@ -46,6 +46,8 @@
     <!-- Navbar Settings -->
     <string name="enable_navigation_bar_title">Enable navigation bar</string>
     <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
+    <string name="swap_navigation_keys_title">Swap back and recents</string>
+    <string name="swap_navigation_keys_summary">Switch the back and recent buttons with each other</string>
 
     <!-- QuickSettings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>
