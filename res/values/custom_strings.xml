@@ -735,6 +735,9 @@
     <string name="heads_up_snooze_10min">10 minutes</string>
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
+    <string name="heads_up_title">Enable</string>
+    <string name="heads_up_summary_enabled">Heads up notifications are enabled</string>
+    <string name="heads_up_summary_disabled">Heads up notifications are disabled</string>
 
     <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Carrier Label</string>
