@@ -47,11 +47,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
     private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
     private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+    private static final String SYSTEMUI_THEME_STYLE = "systemui_theme_style";
 
     private CustomSeekBarPreference mNetTrafficAutohideThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mNetTrafficAutohide;
     private SystemSettingSwitchPreference mNetTrafficHidearrow;
+    private ListPreference mSystemUIThemeStyle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,15 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
         mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold);
         mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
+
+	// SystemUI Theme
+        mSystemUIThemeStyle = (ListPreference) findPreference(SYSTEMUI_THEME_STYLE);
+        int systemUIThemeStyle = Settings.System.getInt(getContentResolver(),
+                Settings.System.SYSTEM_UI_THEME, 0);
+        int valueIndex = mSystemUIThemeStyle.findIndexOfValue(String.valueOf(systemUIThemeStyle));
+        mSystemUIThemeStyle.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
+        mSystemUIThemeStyle.setSummary(mSystemUIThemeStyle.getEntry());
+        mSystemUIThemeStyle.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -129,6 +140,11 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, threshold * 1);
             return true;
+        } else if (preference == mSystemUIThemeStyle) {
+            String value = (String) newValue;
+            Settings.System.putInt(getContentResolver(), Settings.System.SYSTEM_UI_THEME, Integer.valueOf(value));
+            int valueIndex = mSystemUIThemeStyle.findIndexOfValue(value);
+            mSystemUIThemeStyle.setSummary(mSystemUIThemeStyle.getEntries()[valueIndex]);
         }
         return false;
     }

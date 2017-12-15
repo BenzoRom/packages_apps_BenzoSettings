@@ -19,13 +19,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/statusbar_settings_title" >
 
-    <Preference
+     <Preference
             android:title="@string/statusbar_tuner_title"
             android:summary="@string/statusbar_tuner_summary">
         <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
-    </Preference>
+     </Preference>
+
+     <ListPreference
+         android:key="systemui_theme_style"
+         android:title="@string/systemui_theme_style_title"
+         android:persistent="false"
+         android:entries="@array/systemui_theme_style_entries"
+         android:entryValues="@array/systemui_theme_style_values" />
 
      <PreferenceCategory
          android:key="nettraffic_settings"
