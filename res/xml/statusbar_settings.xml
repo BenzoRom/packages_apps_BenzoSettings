@@ -41,13 +41,13 @@
         <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="network_traffic_state"
             android:title="@string/network_traffic_state_title"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="network_traffic_autohide"
             android:title="@string/network_traffic_autohide"
             android:summary="@string/network_traffic_autohide_summary"
-            android:dependency="network_traffic_state" />
+            android:dependency="network_traffic_state"
             android:defaultValue="false" />
 
         <com.benzo.settings.preference.CustomSeekBarPreference
@@ -62,7 +62,7 @@
             android:key="network_traffic_hidearrow"
             android:title="@string/network_traffic_hidearrow"
             android:summary="@string/network_traffic_hidearrow_summary"
-            android:dependency="network_traffic_state" />
+            android:dependency="network_traffic_state"
             android:defaultValue="false" />
 
 </PreferenceScreen>
