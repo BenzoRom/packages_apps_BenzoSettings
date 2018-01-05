@@ -890,4 +890,8 @@
     <string name="system_default_animation_title">Android P animation style</string>
     <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>
 
+    <!-- Brightness control -->
+    <string name="status_bar_toggle_brightness">Brightness control</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
+
 </resources>
