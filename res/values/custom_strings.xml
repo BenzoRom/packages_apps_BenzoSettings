@@ -182,4 +182,8 @@
     <string name="power_menu_hide_on_secure_title">Hide power menu</string>
     <string name="power_menu_hide_on_secure_summary">Hides the power menu on secure lockscreen</string>
 
+    <!-- Brightness control -->
+    <string name="status_bar_toggle_brightness">Brightness control</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding finger across the statusbar</string>
+
 </resources>
