@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/statusbar_settings_title" >
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+         android:key="status_bar_brightness_control"
+         android:title="@string/status_bar_toggle_brightness"
+         android:summary="@string/status_bar_toggle_brightness_summary"
+         android:defaultValue="false" />
+
     <Preference
             android:title="@string/statusbar_tuner_title"
             android:summary="@string/statusbar_tuner_summary">
