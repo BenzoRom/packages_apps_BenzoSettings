@@ -937,4 +937,8 @@
     <string name="wakelock_blocker_warning_title">Proceed with caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss</string>
 
+    <!-- Lockscreen torch -->
+    <string name="keyguard_torch_title">Screen-off torch</string>
+    <string name="keyguard_torch_summary">Longpress power button with screen off turns on torch</string>
+
 </resources>

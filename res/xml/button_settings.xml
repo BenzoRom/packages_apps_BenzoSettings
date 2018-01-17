@@ -41,6 +41,12 @@
             android:summary="@string/lockscreen_disabled_power_menu_summary"
             android:defaultValue="false" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="keyguard_toggle_torch"
+            android:title="@string/keyguard_torch_title"
+            android:summary="@string/keyguard_torch_summary"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="vol_buttons_category"
         android:title="@string/vol_buttons_category_title"/>
