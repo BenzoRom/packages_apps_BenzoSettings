@@ -25,6 +25,12 @@
             android:summary="@string/block_on_secure_keyguard_summary"
             android:defaultValue="false"/>
 
+        <Preference
+            android:key="smart_pixels"
+            android:title="@string/smart_pixels_title"
+            android:summary="@string/smart_pixels_summary"
+            android:fragment="com.benzo.settings.SmartPixels" />
+
         <com.benzo.settings.preference.SecureSettingSwitchPreference
             android:key="quick_settings_vibrate"
             android:title="@string/quick_settings_vibrate_title"
