@@ -96,6 +96,13 @@
             android:dependency="qs_show_brightness_slider"
             android:defaultValue="false"/>
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_buttons"
+            android:title="@string/brightness_buttons_title"
+            android:summary="@string/brightness_buttons_summary"
+            android:dependency="qs_show_brightness_slider"
+            android:defaultValue="false"/>
+
     <PreferenceCategory
         android:title="@string/status_bar_header_title"/>
 

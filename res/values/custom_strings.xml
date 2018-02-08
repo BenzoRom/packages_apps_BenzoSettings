@@ -75,10 +75,12 @@
 
     <!-- QS Brightness-->
     <string name="brightness_cat">Brightness</string>
-    <string name="brightness_icon_title">Brightness icon </string>
+    <string name="brightness_icon_title">Brightness icon</string>
     <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
     <string name="brightness_slider_title">Brightness slider</string>
     <string name="brightness_slider_summary">Show the brightness slider underneath quick settings</string>
+    <string name="brightness_buttons_title">Brightness buttons</string>
+    <string name="brightness_buttons_summary">Show buttons on each side of the slider that increase/decrease by 5%</string>
 
     <!-- Quick pull down-->
     <string name="quick_pulldown_title">Quick pulldown</string>
