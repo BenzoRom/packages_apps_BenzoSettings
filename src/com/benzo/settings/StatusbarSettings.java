@@ -78,7 +78,8 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
-
+    private static final String BATTERY_PERCENT = "show_battery_percent";
+    
     private CustomSeekBarPreference mNetTrafficAutohideThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mNetTrafficAutohide;
@@ -98,7 +99,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private String mCustomCarrierLabelText;
 
     private ListPreference mStatusBarBattery;
-    private SwitchPreference mBatteryPercentage;
+    private ListPreference mBatteryPercentage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -218,10 +219,12 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
-        boolean show = Settings.System.getInt(resolver,
-                Settings.System.SHOW_BATTERY_PERCENT, 1) == 1;
-        mBatteryPercentage = (SwitchPreference) findPreference("show_battery_percent");
-        mBatteryPercentage.setChecked(show);
+        mBatteryPercentage = (ListPreference) findPreference(BATTERY_PERCENT);
+        int showPercent = Settings.System.getInt(resolver,
+                Settings.System.SHOW_BATTERY_PERCENT, 1);
+        mBatteryPercentage.setValue(Integer.toString(showPercent));
+        valueIndex = mBatteryPercentage.findIndexOfValue(String.valueOf(showPercent));
+        mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[valueIndex]);
         mBatteryPercentage.setOnPreferenceChangeListener(this);
         boolean hideForcePercentage = batteryStyle == 6; /*text*/
         mBatteryPercentage.setEnabled(!hideForcePercentage);
@@ -383,19 +386,20 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             return true;
         } else if (preference == mStatusBarBattery) {
-            int clockStyle = Integer.valueOf((String) newValue);
+            int battStyle = Integer.valueOf((String) newValue);
             int index = mStatusBarBattery.findIndexOfValue((String) newValue);
             Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, clockStyle);
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, battStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
-            boolean hideForcePercentage = clockStyle == 6;/*text*/
+            boolean hideForcePercentage = battStyle == 6;/*text*/
             mBatteryPercentage.setEnabled(!hideForcePercentage);
             return true;
         } else  if (preference == mBatteryPercentage) {
-            boolean value = (Boolean) newValue;
+            int showPercent = Integer.valueOf((String) newValue);
+            int index = mBatteryPercentage.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SHOW_BATTERY_PERCENT, value ? 1 : 0);
-            mBatteryPercentage.setChecked(value);
+                Settings.System.SHOW_BATTERY_PERCENT, showPercent);
+            mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[index]);
             return true;
       }
       return false;
