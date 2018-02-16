@@ -78,13 +78,13 @@ public class ColorPickerDialog
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        View layout = inflater.inflate(R.layout.dialog_color_picker, null);
+        View layout = inflater.inflate(R.layout.dialog_color_picker_margaritov, null);
 
         setContentView(layout);
 
         setTitle(R.string.dialog_color_picker);
 
-        mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
+        mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view_margaritov);
         mOldColor = (ColorPickerPanelView) layout.findViewById(R.id.old_color_panel);
         mNewColor = (ColorPickerPanelView) layout.findViewById(R.id.new_color_panel);
 
