@@ -27,7 +27,6 @@
 
     <ImageView
         android:src="@drawable/ic_settings_ime"
-        android:tint="?android:attr/colorAccent"
         android:layout_width="@dimen/dashboard_tile_image_size"
         android:layout_height="@dimen/dashboard_tile_image_size"
         android:scaleType="centerInside"
