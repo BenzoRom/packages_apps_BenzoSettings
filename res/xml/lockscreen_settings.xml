@@ -68,6 +68,12 @@
             android:defaultValue="true" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="lock_screen_visualizer_show"
+            android:title="@string/lockscreen_visualizer_title"
+            android:summary="@string/lockscreen_visualizer_summary"
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="lockscreen_pin_ripple"
             android:title="@string/lockscreen_pin_ripple_title"
             android:summary="@string/lockscreen_pin_ripple_summary"
