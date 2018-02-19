@@ -226,7 +226,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         valueIndex = mBatteryPercentage.findIndexOfValue(String.valueOf(showPercent));
         mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[valueIndex]);
         mBatteryPercentage.setOnPreferenceChangeListener(this);
-        boolean hideForcePercentage = batteryStyle == 6; /*text*/
+        boolean hideForcePercentage = batteryStyle == 7; /*text*/
         mBatteryPercentage.setEnabled(!hideForcePercentage);
     }
 
@@ -391,7 +391,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, battStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
-            boolean hideForcePercentage = battStyle == 6;/*text*/
+            boolean hideForcePercentage = battStyle == 7;/*text*/
             mBatteryPercentage.setEnabled(!hideForcePercentage);
             return true;
         } else  if (preference == mBatteryPercentage) {
