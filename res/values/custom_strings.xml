@@ -805,8 +805,4 @@
     <string name="battery_percent_outside">Show near icon</string>
     <string name="battery_percent_inside">Show inside icon</string>
 
-    <!-- Lockscreen visualizer -->
-    <string name="lockscreen_visualizer_title">Music visualizer</string>
-    <string name="lockscreen_visualizer_summary">Toggle visualizer display on lockscreen</string>
-
 </resources>
