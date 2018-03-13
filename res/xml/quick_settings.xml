@@ -51,4 +51,14 @@
             android:summary="@string/block_on_secure_keyguard_summary"
             android:defaultValue="false"/>
 
+    <PreferenceCategory
+        android:title="@string/screenrecord_quality_cat"/>
+
+        <ListPreference
+            android:key="screen_record_quality"
+            android:title="@string/screenrecord_quality_title"
+            android:entries="@array/screenrecord_quality_entries"
+            android:entryValues="@array/screenrecord_quality_values"
+            android:persistent="false"/>
+
 </PreferenceScreen>

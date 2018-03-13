@@ -38,9 +38,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    private static final String KEY_SCREEN_RECORD_QUALITY = "screen_record_quality";
 
     private ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
+    private ListPreference mScreenRecordQuality;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -62,6 +64,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_SMART_PULLDOWN, 0);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
+
+        mScreenRecordQuality = (ListPreference) findPreference(KEY_SCREEN_RECORD_QUALITY);
+        int screenRecordQuality = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_RECORD_QUALITY, 0);
+        mScreenRecordQuality.setValue(Integer.toString(screenRecordQuality));
+        mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntry());
+        mScreenRecordQuality.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -77,6 +86,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int smartPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
             updateSmartPulldownSummary(smartPulldown);
+            return true;
+        } else if (preference == mScreenRecordQuality) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mScreenRecordQuality.findIndexOfValue((String) newValue);
+            mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntries()[index]);
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_RECORD_QUALITY, value);
             return true;
         }
         return false;
