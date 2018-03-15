@@ -77,7 +77,7 @@
             android:key="qs_show_brightness_slider"
             android:title="@string/brightness_slider_title"
             android:summary="@string/brightness_slider_summary"
-            android:defaultValue="true"/>
+            android:defaultValue="false"/>
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="qs_show_brightness_icon"
