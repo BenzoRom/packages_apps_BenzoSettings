@@ -38,6 +38,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.benzo.settings.preference.SystemSettingSeekBarPreference;
+
 import com.android.internal.logging.nano.MetricsProto;
 
 import java.util.ArrayList;
@@ -51,12 +53,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    private static final String KEY_QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
 
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
     private ListPreference mTileAnimationInterpolator;
     private ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
+    private SystemSettingSeekBarPreference mQSPanelAlpha;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -102,6 +106,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_SMART_PULLDOWN, 0);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
+
+        // QS Panel alpha
+        mQSPanelAlpha = (SystemSettingSeekBarPreference) findPreference(KEY_QS_PANEL_BG_ALPHA);
+        final int panelAlpha = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_PANEL_BG_ALPHA, 255);
+        mQSPanelAlpha.setValue((int)(((double) panelAlpha / 255) * 100));
+        mQSPanelAlpha.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -136,6 +147,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int smartPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
             updateSmartPulldownSummary(smartPulldown);
+            return true;
+        } else if (preference == mQSPanelAlpha) {
+            Integer panelAlpha = (Integer) newValue;
+            int realPanelAlpha = (int) (((double) panelAlpha / 100) * 255);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, realPanelAlpha);
             return true;
         }
         return false;

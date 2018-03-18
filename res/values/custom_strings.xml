@@ -27,6 +27,7 @@
     <string name="reset_message">Reset all entries to default?</string>
     <string name="attention">Attention</string>
     <string name="reset">Reset</string>
+    <string name="unit_percent">\u0025</string>
 
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
@@ -466,5 +467,9 @@
     <string name="lockscreen_visualizer_enable_custom">Use custom color</string>
     <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
     <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
+
+    <!-- QS Panel alpha -->
+    <string name="qs_panel_bg_alpha_title">Panel transparency</string>
+    <string name="qs_panel_bg_alpha_summary">Change how much you can see through the quick settings panel</string>
 
 </resources>
