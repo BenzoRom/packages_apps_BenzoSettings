@@ -57,6 +57,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
+    private static final String KEY_QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
 
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
@@ -75,6 +76,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
     private ListPreference mScreenRecordQuality;
+    private CustomSeekBarPreference mQSPanelAlpha;
 
     private Preference mHeaderBrowse;
     private ListPreference mDaylightHeaderPack;
@@ -174,6 +176,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mHeaderProvider.setOnPreferenceChangeListener(this);
 
         mFileHeader = findPreference(FILE_HEADER_SELECT);
+
+        // QS Panel alpha
+        mQSPanelAlpha = (CustomSeekBarPreference) findPreference(KEY_QS_PANEL_BG_ALPHA);
+        final int panelAlpha = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_PANEL_BG_ALPHA, 221);
+        mQSPanelAlpha.setValue((int)(((double) panelAlpha / 255) * 100));
+        mQSPanelAlpha.setOnPreferenceChangeListener(this);
     }
 
     private void updateHeaderProviderSummary(boolean headerEnabled) {
@@ -258,6 +267,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mHeaderEnabled) {
             Boolean headerEnabled = (Boolean) newValue;
             updateHeaderProviderSummary(headerEnabled);
+        } else if (preference == mQSPanelAlpha) {
+            Integer panelAlpha = (Integer) newValue;
+            int realPanelAlpha = (int) (((double) panelAlpha / 100) * 255);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, realPanelAlpha);
         }
         return true;
     }

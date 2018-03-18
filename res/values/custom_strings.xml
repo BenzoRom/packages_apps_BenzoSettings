@@ -861,8 +861,11 @@
     <string name="file_header_select_summary">Select image from storage</string>
     <string name="file_header_provider_title">Single image</string>
     <string name="file_header_provider" translatable="false">file</string>
-
     <string name="qs_show_mini_title">Mini mode</string>
     <string name="qs_show_mini_summary">Make the header images smaller</string>
+
+    <!-- QS Panel alpha -->
+    <string name="qs_panel_bg_alpha_title">Panel transparency</string>
+    <string name="qs_panel_bg_alpha_summary">Change how much you can see through the quick settings panel</string>
 
 </resources>

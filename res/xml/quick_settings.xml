@@ -45,6 +45,15 @@
             android:summary="@string/block_on_secure_keyguard_summary"
             android:defaultValue="false"/>
 
+        <com.benzo.settings.preference.CustomSeekBarPreference
+            android:key="qs_panel_bg_alpha"
+            android:title="@string/qs_panel_bg_alpha_title"
+            android:summary="@string/qs_panel_bg_alpha_summary"
+            android:max="100"
+            settings:min="0"
+            settings:units="@string/unit_percent"
+            android:persistent="false" />
+
     <PreferenceCategory
         android:key="quick_settings_animations"
         android:title="@string/animation_title"/>
