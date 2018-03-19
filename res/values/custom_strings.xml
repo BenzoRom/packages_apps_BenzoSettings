@@ -911,4 +911,8 @@
     <string name="fprint_sucess_vib_title">Vibration when unlocking</string>
     <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
 
+    <!-- Smbient display weather -->
+    <string name="ambient_display_weather_title">Ambient display weather</string>
+    <string name="ambient_display_weather_summary">Show weather information on the bottom of ambient display</string>
+
 </resources>
