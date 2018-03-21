@@ -50,6 +50,8 @@
     <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
     <string name="swap_navigation_keys_title">Swap back and recents</string>
     <string name="swap_navigation_keys_summary">Switch the back and recent buttons with each other</string>
+    <string name="navbar_dynamic_title">Dynamic navbar color</string>
+    <string name="navbar_dynamic_summary">Changes the navigation bar color based on the foreground app in use</string>
 
     <!-- Recents panel settings -->
     <string name="clearall_recents_category">Clear all button</string>
