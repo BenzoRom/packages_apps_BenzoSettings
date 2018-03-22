@@ -37,7 +37,7 @@
     <string name="more_settings_title">More</string>
     <string name="statusbar_settings_title">Statusbar</string>
     <string name="quicksettings_title">Quick Settings</string>
-    <string name="app_ops_settings_title">App Ops</string>
+    <string name="app_ops_settings_title">Privacy Guard</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="navigation_other_category">Other</string>
     <string name="notifications_settings_benzo_title">Notifications</string>

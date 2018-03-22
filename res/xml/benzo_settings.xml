@@ -27,16 +27,6 @@
             android:layout="@layout/preference_benzoextra_animations"
             />
 
-        <!-- AppOps -->
-        <Preference
-            android:key="app_ops_settings"
-            android:title="@string/app_ops_settings_title"
-            android:layout="@layout/preference_benzoextra_appops">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.applications.appops.AppOpsSummary" />
-        </Preference>
-
         <!-- Buttons -->
         <Preference
             android:key="button_settings"
@@ -83,6 +73,14 @@
             android:fragment="com.benzo.settings.Notifications"
             android:title="@string/notifications_settings_benzo_title" 
             android:layout="@layout/preference_benzoextra_notifications"
+            />
+
+        <!-- Privacy Guard -->
+        <Preference
+            android:key="privacy_guard_manager"
+            android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+            android:title="@string/app_ops_settings_title"
+            android:layout="@layout/preference_benzoextra_appops"
             />
 
         <!-- Quick Settings -->
