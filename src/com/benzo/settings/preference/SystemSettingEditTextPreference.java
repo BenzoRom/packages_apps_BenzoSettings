@@ -17,34 +17,52 @@
 package com.benzo.settings.preference;
 
 import android.content.Context;
-import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.EditTextPreference;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
-public class SystemSettingSwitchPreference extends SwitchPreference {
+public class SystemSettingEditTextPreference extends EditTextPreference {
+    private boolean mAutoSummary = false;
 
-    public SystemSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {
+    public SystemSettingEditTextPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingSwitchPreference(Context context, AttributeSet attrs) {
+    public SystemSettingEditTextPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingSwitchPreference(Context context) {
+    public SystemSettingEditTextPreference(Context context) {
         super(context);
         setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        // This is what default TwoStatePreference implementation is doing without respecting
+        // This is what default ListPreference implementation is doing without respecting
         // real default value:
-        //setChecked(restoreValue ? getPersistedBoolean(mChecked)
-        //        : (Boolean) defaultValue);
+        //setText(restoreValue ? getPersistedString(mText) : (String) defaultValue);
         // Instead, we better do
-        setChecked(restoreValue ? getPersistedBoolean((Boolean) defaultValue)
-                : (Boolean) defaultValue);
+        setText(restoreValue ? getPersistedString((String) defaultValue) : (String) defaultValue);
+    }
+
+    @Override
+    public void setText(String text) {
+        super.setText(text);
+        if (mAutoSummary || TextUtils.isEmpty(getSummary())) {
+            setSummary(text, true);
+        }
+    }
+
+    @Override
+    public void setSummary(CharSequence summary) {
+        setSummary(summary, false);
+    }
+
+    private void setSummary(CharSequence summary, boolean autoSummary) {
+        mAutoSummary = autoSummary;
+        super.setSummary(summary);
     }
 }
