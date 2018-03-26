@@ -662,8 +662,8 @@
     <string name="weather_cat_options_title">Weather options</string>
     <string name="weather_cat_notifications_title">Notifications</string>
     <string name="weather_cat_settings_title">OmniJaws Weather</string>
-    <string name="weather_show_weather_title">Enable</string>
-    <string name="weather_show_weather_summary">Display weather on lockscreen</string>
+    <string name="weather_show_weather_title">Lockscreen weather</string>
+    <string name="weather_show_weather_summary">Enable to show weather and temp on the lockscreen</string>
     <string name="weather_show_location_title">Show location</string>
     <string name="weather_show_location_summary">Display weather location</string>
     <string name="hidden_title">Hidden</string>
