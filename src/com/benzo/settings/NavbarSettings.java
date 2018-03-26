@@ -36,7 +36,7 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.widget.SeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSeekBarPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -70,7 +70,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mBatteryBarBatteryHighColor;
 
     private SwitchPreference mKillAppLongPressBack;
-    private SeekBarPreference mLongpressKillDelay;
+    private SystemSettingSeekBarPreference mLongpressKillDelay;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -162,10 +162,10 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mKillAppLongPressBack.setChecked(killAppLongPressBack != 0);
 
         // kill-app long press back delay
-        mLongpressKillDelay = (SeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
+        mLongpressKillDelay = (SystemSettingSeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
         int killconf = Settings.System.getInt(getContentResolver(),
                 Settings.System.LONG_PRESS_KILL_DELAY, 1000);
-        mLongpressKillDelay.setProgress(killconf);
+        mLongpressKillDelay.setValue(killconf);
         mLongpressKillDelay.setOnPreferenceChangeListener(this);
 
         updateBatteryBarOptions();

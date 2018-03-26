@@ -63,9 +63,6 @@ import java.util.List;
 public class RecentsSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, DialogInterface.OnDismissListener {
 
-    private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
-    private static final String IMMERSIVE_RECENTS = "immersive_recents";
-
     private final static String[] sSupportedActions = new String[] {
         "org.adw.launcher.THEMES",
         "com.gau.go.launcherex.theme"
@@ -80,51 +77,18 @@ public class RecentsSettings extends SettingsPreferenceFragment implements
     private AlertDialog mDialog;
     private ListView mListView;
 
-    private SwitchPreference mRecentsClearAll;
-    private ListPreference mRecentsClearAllLocation;
-    private ListPreference mImmersiveRecents;
-
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.recents_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
-
-        // clear all location
-        mRecentsClearAllLocation = (ListPreference) findPreference(RECENTS_CLEAR_ALL_LOCATION);
-        int location = Settings.System.getIntForUser(resolver,
-                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3, UserHandle.USER_CURRENT);
-        mRecentsClearAllLocation.setValue(String.valueOf(location));
-        mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
-        mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
-
-        // Immersive Recents
-        mImmersiveRecents = (ListPreference) findPreference(IMMERSIVE_RECENTS);
-        mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.IMMERSIVE_RECENTS, 0)));
-        mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
-        mImmersiveRecents.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mRecentsClearAllLocation) {
-            int location = Integer.valueOf((String) newValue);
-            int index = mRecentsClearAllLocation.findIndexOfValue((String) newValue);
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
-            mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
-            return true;
-        } else if (preference == mImmersiveRecents) {
-            Settings.System.putInt(getContentResolver(), Settings.System.IMMERSIVE_RECENTS,
-                    Integer.valueOf((String) newValue));
-            mImmersiveRecents.setValue(String.valueOf(newValue));
-            mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
-            return true;
-        }
-        return false;
+        return true;
     }
 
     @Override

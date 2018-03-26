@@ -48,7 +48,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.benzo.settings.preference.CustomSeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSeekBarPreference;
 import com.benzo.settings.preference.SystemSettingSwitchPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -57,9 +57,6 @@ import java.util.Date;
 public class StatusbarSettings extends SettingsPreferenceFragment implements
 	Preference.OnPreferenceChangeListener  {
 
-    private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
-    private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
-    private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
     private static final String SYSTEMUI_THEME_STYLE = "systemui_theme_style";
 
     private static final String STATUS_BAR_CLOCK = "status_bar_clock";
@@ -73,15 +70,11 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
 
-    private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
     private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String BATTERY_PERCENT = "show_battery_percent";
-    
-    private CustomSeekBarPreference mNetTrafficAutohideThreshold;
-    private SystemSettingSwitchPreference mNetMonitor;
-    private SystemSettingSwitchPreference mNetTrafficHidearrow;
+
     private ListPreference mSystemUIThemeStyle;
 
     private SystemSettingSwitchPreference mStatusBarClockShow;
@@ -93,7 +86,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mClockDateFormat;
 
     private PreferenceScreen mCustomCarrierLabel;
-    private ListPreference mShowCarrierLabel;
     private String mCustomCarrierLabelText;
 
     private ListPreference mStatusBarBattery;
@@ -104,24 +96,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.statusbar_settings);
         ContentResolver resolver = getActivity().getContentResolver();
-
-        boolean isNetMonitorEnabled = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
-        mNetMonitor = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_STATE);
-        mNetMonitor.setChecked(isNetMonitorEnabled);
-        mNetMonitor.setOnPreferenceChangeListener(this);
-
-        mNetTrafficHidearrow =
-            (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
-        mNetTrafficHidearrow.setChecked((Settings.System.getInt(resolver,
-                Settings.System.NETWORK_TRAFFIC_HIDEARROW, 0) == 1));
-        mNetTrafficHidearrow.setOnPreferenceChangeListener(this);
-
-        mNetTrafficAutohideThreshold = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
-        int netTrafficAutohideThreshold = Settings.System.getInt(resolver,
-                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 0);
-        mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold);
-        mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
 
 	// SystemUI Theme
         mSystemUIThemeStyle = (ListPreference) findPreference(SYSTEMUI_THEME_STYLE);
@@ -192,14 +166,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         }
         parseClockDateFormats();
 
-        // custom carrier label
-        mShowCarrierLabel = (ListPreference) findPreference(SHOW_CARRIER_LABEL);
-        int showCarrierLabel = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_SHOW_CARRIER, 1);
-        mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
-        mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
-        mShowCarrierLabel.setOnPreferenceChangeListener(this);
-
         mCustomCarrierLabel = (PreferenceScreen) findPreference(CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
 
@@ -215,8 +181,8 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         int showPercent = Settings.System.getInt(resolver,
                 Settings.System.SHOW_BATTERY_PERCENT, 0);
         mBatteryPercentage.setValue(Integer.toString(showPercent));
-        valueIndex = mBatteryPercentage.findIndexOfValue(String.valueOf(showPercent));
-        mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[valueIndex]);
+        int valueOfIndex = mBatteryPercentage.findIndexOfValue(String.valueOf(showPercent));
+        mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[valueOfIndex]);
         mBatteryPercentage.setOnPreferenceChangeListener(this);
         boolean hideForcePercentage = batteryStyle == 7; /*text*/
         mBatteryPercentage.setEnabled(!hideForcePercentage);
@@ -232,43 +198,15 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         super.onResume();
     }
 
-    private void updateNetworkTrafficState(boolean value) {
-        if (!value) {
-            mNetTrafficHidearrow.setEnabled(false);
-            mNetTrafficAutohideThreshold.setEnabled(false);
-            mNetTrafficHidearrow.setEnabled(false);
-        } else {
-            mNetTrafficHidearrow.setEnabled(true);
-            mNetTrafficAutohideThreshold.setEnabled(true);
-            mNetTrafficHidearrow.setEnabled(true);
-        }
-    }
-
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         AlertDialog dialog;
-        if (preference == mNetMonitor) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putIntForUser(getActivity().getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
-                    UserHandle.USER_CURRENT);
-            updateNetworkTrafficState(value);
-            return true;
-        } else if (preference == mNetTrafficHidearrow) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_HIDEARROW, value ? 1 : 0);
-            return true;
-        } else if (preference == mNetTrafficAutohideThreshold) {
-            int threshold = (Integer) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, threshold * 1);
-            return true;
-        } else if (preference == mSystemUIThemeStyle) {
+        if (preference == mSystemUIThemeStyle) {
             String value = (String) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEM_UI_THEME, Integer.valueOf(value));
             int valueIndex = mSystemUIThemeStyle.findIndexOfValue(value);
             mSystemUIThemeStyle.setSummary(mSystemUIThemeStyle.getEntries()[valueIndex]);
+            return true;
         } else if (preference == mStatusBarClockShow) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
@@ -364,13 +302,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                         Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
             }
-            return true;
-        } else if (preference == mShowCarrierLabel) {
-            int showCarrierLabel = Integer.valueOf((String) newValue);
-            int index = mShowCarrierLabel.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_SHOW_CARRIER, showCarrierLabel);
-            mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             return true;
         } else if (preference == mStatusBarBattery) {
             int battStyle = Integer.valueOf((String) newValue);

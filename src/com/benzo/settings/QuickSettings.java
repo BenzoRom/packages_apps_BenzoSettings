@@ -36,7 +36,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.benzo.settings.preference.CustomSeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSeekBarPreference;
 import com.benzo.settings.preference.SystemSettingSwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -53,7 +53,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
-    private static final String KEY_SCREEN_RECORD_QUALITY = "screen_record_quality";
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
@@ -75,12 +74,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
-    private ListPreference mScreenRecordQuality;
-    private CustomSeekBarPreference mQSPanelAlpha;
+    private SystemSettingSeekBarPreference mQSPanelAlpha;
 
     private Preference mHeaderBrowse;
     private ListPreference mDaylightHeaderPack;
-    private CustomSeekBarPreference mHeaderShadow;
+    private SystemSettingSeekBarPreference mHeaderShadow;
     private ListPreference mHeaderProvider;
     private String mDaylightHeaderProvider;
     private SystemSettingSwitchPreference mHeaderEnabled;
@@ -116,13 +114,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_SMART_PULLDOWN, 0);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
-
-        mScreenRecordQuality = (ListPreference) findPreference(KEY_SCREEN_RECORD_QUALITY);
-        int screenRecordQuality = Settings.System.getInt(getContentResolver(),
-                Settings.System.SCREEN_RECORD_QUALITY, 0);
-        mScreenRecordQuality.setValue(Integer.toString(screenRecordQuality));
-        mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntry());
-        mScreenRecordQuality.setOnPreferenceChangeListener(this);
 
         // QS animation
         mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
@@ -166,7 +157,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         updateHeaderProviderSummary(headerEnabled);
         mDaylightHeaderPack.setOnPreferenceChangeListener(this);
 
-        mHeaderShadow = (CustomSeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+        mHeaderShadow = (SystemSettingSeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
         final int headerShadow = Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
         mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
@@ -178,7 +169,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mFileHeader = findPreference(FILE_HEADER_SELECT);
 
         // QS Panel alpha
-        mQSPanelAlpha = (CustomSeekBarPreference) findPreference(KEY_QS_PANEL_BG_ALPHA);
+        mQSPanelAlpha = (SystemSettingSeekBarPreference) findPreference(KEY_QS_PANEL_BG_ALPHA);
         final int panelAlpha = Settings.System.getInt(getContentResolver(),
                 Settings.System.QS_PANEL_BG_ALPHA, 221);
         mQSPanelAlpha.setValue((int)(((double) panelAlpha / 255) * 100));
@@ -225,11 +216,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int smartPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
             updateSmartPulldownSummary(smartPulldown);
-        } else if (preference == mScreenRecordQuality) {
-            int value = Integer.valueOf((String) newValue);
-            int index = mScreenRecordQuality.findIndexOfValue((String) newValue);
-            mScreenRecordQuality.setSummary(mScreenRecordQuality.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_RECORD_QUALITY, value);
         } else if (preference == mTileAnimationStyle) {
             int tileAnimationStyle = Integer.valueOf((String) newValue);
             Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_STYLE,

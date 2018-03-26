@@ -33,9 +33,7 @@ import android.widget.ListView;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.widget.SeekBarPreference;
 
-import com.benzo.settings.preference.CustomSeekBarPreference;
 import com.android.internal.logging.nano.MetricsProto;
 
 public class LockScreenSettings extends SettingsPreferenceFragment implements
@@ -43,12 +41,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     private static final String PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE =
             "lockscreen_shortcuts_launch_type";
-    private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
-    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
 
     private ListPreference mLockscreenShortcutsLaunchType;
-    private CustomSeekBarPreference mMaxKeyguardNotifConfig;
-    ListPreference mLockClockFonts;
 
     @Override
     public int getMetricsCategory() {
@@ -60,25 +54,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreen_settings);
         ContentResolver resolver = getActivity().getContentResolver();
-
         PreferenceScreen prefSet = getPreferenceScreen();
-
-        mMaxKeyguardNotifConfig = (CustomSeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
-        int kgconf = Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
-        mMaxKeyguardNotifConfig.setValue(kgconf);
-        mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
 
         mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
                 PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE);
         mLockscreenShortcutsLaunchType.setOnPreferenceChangeListener(this);
         setHasOptionsMenu(false);
-
-        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
-        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 0)));
-        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
-        mLockClockFonts.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -102,19 +83,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS,
                     Integer.valueOf((String) newValue));
-            return true;
-        } else if (preference == mMaxKeyguardNotifConfig) {
-            int kgconf = (Integer) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
-            return true;
-        } else if (preference == mLockClockFonts) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_CLOCK_FONTS,
-                    Integer.valueOf((String) newValue));
-            mLockClockFonts.setValue(String.valueOf(newValue));
-            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
-            return true;
         }
-        return false;
+        return true;
     }
 }

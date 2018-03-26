@@ -16,7 +16,7 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:benzo="http://schemas.android.com/apk/res-auto"
     android:title="@string/lockscreen_settings_benzo_title" >
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
@@ -25,41 +25,43 @@
             android:summary="@string/lockscreen_charging_current_summary"
             android:defaultValue="false" />
 
-        <ListPreference
+        <com.benzo.settings.preference.SystemSettingListPreference
             android:key="lock_clock_fonts"
             android:title="@string/lock_clock_font_title"
             android:dialogTitle="@string/lock_clock_font_dialog_title"
             android:entries="@array/lock_clock_fonts_entries"
             android:entryValues="@array/lock_clock_fonts_values"
-            android:summary="@string/lock_clock_font_summary"
-            android:persistent="false" />
+            android:summary="%s"
+            android:defaultValue="0" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
-               android:key="double_tap_sleep_lockscreen"
-               android:title="@string/double_tap_sleep_lockscreen_title"
-               android:summary="@string/double_tap_sleep_lockscreen_sumary"
-               android:defaultValue="false" />
+            android:key="double_tap_sleep_lockscreen"
+            android:title="@string/double_tap_sleep_lockscreen_title"
+            android:summary="@string/double_tap_sleep_lockscreen_sumary"
+            android:defaultValue="false" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
-               android:key="lockscreen_rotation"
-               android:title="@string/lockscreen_rotation_title"
-               android:summary="@string/lockscreen_rotation_summary"
-               android:defaultValue="false" />
+            android:key="lockscreen_rotation"
+            android:title="@string/lockscreen_rotation_title"
+            android:summary="@string/lockscreen_rotation_summary"
+            android:defaultValue="false" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
-               android:key="lock_screen_custom_notif"
-               android:title="@string/lockscreen_maxnotif_title"
-               android:summary="@string/lockscreen_maxnotif_sumary"
-               android:defaultValue="false" />
+            android:key="lock_screen_custom_notif"
+            android:title="@string/lockscreen_maxnotif_title"
+            android:summary="@string/lockscreen_maxnotif_sumary"
+            android:defaultValue="false" />
 
-        <com.benzo.settings.preference.CustomSeekBarPreference
-               android:key="lockscreen_max_notif_cofig"
-               android:title="@string/lockscreen_maxnotif_config"
-               android:max="8"
-               settings:min="3"
-               settings:units=""
-               android:persistent="false"
-               android:dependency="lock_screen_custom_notif" />
+        <com.benzo.settings.preference.SystemSettingSeekBarPreference
+            android:key="lockscreen_max_notif_cofig"
+            android:title="@string/lockscreen_maxnotif_config"
+            android:summary="@string/qs_panel_bg_alpha_summary"
+            android:max="8"
+            android:min="3"
+            benzo:unitsLeft=""
+            benzo:unitsRight=""
+            android:persistent="false"
+            android:dependency="lock_screen_custom_notif" />
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="lockscreen_media_metadata"

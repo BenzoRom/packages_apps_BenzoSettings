@@ -69,23 +69,9 @@
         android:title="@string/global_actions_users"
         android:defaultValue="false" />
 
-    <PreferenceCategory
-        android:key="onthego_category"
-        android:title="@string/onthego_title"/>
-
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
-            android:key="global_actions_onthego"
-            android:title="@string/global_actions_onthego_title"
-            android:defaultValue="false" />
-
-        <com.benzo.settings.preference.CustomSeekBarPreference
-            android:key="on_the_go_alpha"
-            android:title="@string/onthego_alpha_title"
-            android:summary="@string/onthego_alpha_summary"
-            android:dependency="global_actions_onthego"
-            android:defaultValue="50"
-            android:max="100"
-            settings:min="0"
-            settings:units="" />
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="global_actions_onthego"
+        android:title="@string/global_actions_onthego_title"
+        android:defaultValue="false" />
 
 </PreferenceScreen>

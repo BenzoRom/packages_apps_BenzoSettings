@@ -16,7 +16,7 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:benzo="http://schemas.android.com/apk/res-auto"
     android:title="@string/lockscreen_weather_title" >
 
     <PreferenceCategory
@@ -71,13 +71,15 @@
             android:entryValues="@array/weather_hide_panel_values"
             android:dependency="lock_screen_show_weather" />
 
-        <com.benzo.settings.preference.CustomSeekBarPreference
+        <com.benzo.settings.preference.SystemSettingSeekBarPreference
             android:key="weather_number_of_notifications"
             android:title="@string/weather_number_of_notifications_title"
             android:max="6"
-            settings:min="0"
-            settings:units=""
-            android:dependency="lock_screen_show_weather"
-            android:persistent="false" />
+            android:min="0"
+            benzo:unitsLeft=""
+            benzo:unitsRight=""
+            android:defaultValue="4"
+            android:persistent="false"
+            android:dependency="lock_screen_show_weather" />
 
 </PreferenceScreen>

@@ -41,7 +41,7 @@ import com.android.internal.util.benzo.PackageUtils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.benzo.settings.preference.CustomSeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSeekBarPreference;
 import com.android.settings.Utils;
 
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
     private ListPreference mWeatherIconPack;
     private String mWeatherIconPackNote;
     private ListPreference mHideWeather;
-    private CustomSeekBarPreference mNumberOfNotifications;
+    private SystemSettingSeekBarPreference mNumberOfNotifications;
 
     private ContentResolver mResolver;
 
@@ -88,7 +88,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
         mHideWeather.setValue(String.valueOf(hideWeather));
         mHideWeather.setOnPreferenceChangeListener(this);
 
-        mNumberOfNotifications = (CustomSeekBarPreference) findPreference(PREF_NUMBER_OF_NOTIFICATIONS);
+        mNumberOfNotifications = (SystemSettingSeekBarPreference) findPreference(PREF_NUMBER_OF_NOTIFICATIONS);
         int numberOfNotifications = Settings.System.getInt(mResolver,
                 Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, 4);
         mNumberOfNotifications.setValue(numberOfNotifications);
