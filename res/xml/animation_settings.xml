@@ -19,6 +19,12 @@
     android:title="@string/animation_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <com.benzo.settings.preference.GlobalSettingSwitchPreference
+        android:key="system_default_animation"
+        android:title="@string/system_default_animation_title"
+        android:summary="@string/system_default_animation_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="aokp_animation"
         android:title="@string/system_animation_title"
