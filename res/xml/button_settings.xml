@@ -19,23 +19,27 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/button_settings_title" >
 
-    <Preference
-        android:key="global_actions"
-        android:title="@string/global_actions_title"
-        android:summary="@string/global_actions_summary"
-        android:fragment="com.benzo.settings.GlobalActionsSettings" />
+    <PreferenceCategory
+        android:key="power_buttons_category"
+        android:title="@string/power_buttons_category_title"/>
 
-    <com.benzo.settings.preference.SecureSettingSwitchPreference
-        android:key="advanced_reboot"
-        android:title="@string/global_actions_advanced_reboot_title"
-        android:summary="@string/global_actions_advanced_reboot_summary"
-        android:defaultValue="true" />
+        <Preference
+            android:key="global_actions"
+            android:title="@string/global_actions_title"
+            android:summary="@string/global_actions_summary"
+            android:fragment="com.benzo.settings.GlobalActionsSettings" />
 
-    <com.benzo.settings.preference.SystemSettingSwitchPreference
-        android:key="lockscreen_power_menu_disabled"
-        android:title="@string/lockscreen_disabled_power_menu_title"
-        android:summary="@string/lockscreen_disabled_power_menu_summary"
-        android:defaultValue="false" />
+        <com.benzo.settings.preference.SecureSettingSwitchPreference
+            android:key="advanced_reboot"
+            android:title="@string/global_actions_advanced_reboot_title"
+            android:summary="@string/global_actions_advanced_reboot_summary"
+            android:defaultValue="true" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_power_menu_disabled"
+            android:title="@string/lockscreen_disabled_power_menu_title"
+            android:summary="@string/lockscreen_disabled_power_menu_summary"
+            android:defaultValue="false" />
 
     <PreferenceCategory
         android:key="vol_buttons_category"

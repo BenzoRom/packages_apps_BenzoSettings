@@ -40,6 +40,7 @@
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="navigation_other_category">Other</string>
+    <string name="power_buttons_category_title">Power button</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
@@ -147,7 +148,7 @@
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
     <!-- Power menu on lockscreen -->
-    <string name="lockscreen_disabled_power_menu_title">Hide power menu on lock scree</string>
+    <string name="lockscreen_disabled_power_menu_title">Hide power menu on lock screen</string>
     <string name="lockscreen_disabled_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
 
     <!-- Hide Apps from Recents -->
