@@ -45,6 +45,18 @@
             android:summary="@string/block_on_secure_keyguard_summary"
             android:defaultValue="false"/>
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_footer_show_settings"
+            android:title="@string/qs_footer_settings_title"
+            android:summary="@string/qs_footer_settings_summary"
+            android:defaultValue="true" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_footer_show_services"
+            android:title="@string/qs_footer_services_title"
+            android:summary="@string/qs_footer_services_summary"
+            android:defaultValue="false" />
+
         <com.benzo.settings.preference.SystemSettingSeekBarPreference
             android:key="qs_panel_bg_alpha"
             android:title="@string/qs_panel_bg_alpha_title"

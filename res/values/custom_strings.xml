@@ -898,4 +898,10 @@
     <string name="volume_keys_control_media_stream_title">Controls media volume</string>
     <string name="volume_keys_control_media_stream_summary">Force the volume keys to always control media stream</string>
 
+    <!-- QS footer icons -->
+    <string name="qs_footer_services_title">Show Running Services icon</string>
+    <string name="qs_footer_services_summary">Display Running Services icon in quick settings footer</string>
+    <string name="qs_footer_settings_title">Show Settings icon</string>
+    <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
+
 </resources>
