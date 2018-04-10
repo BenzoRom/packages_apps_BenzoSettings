@@ -904,4 +904,8 @@
     <string name="qs_footer_settings_title">Show Settings icon</string>
     <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
 
+    <!-- Wake And Unlock -->
+    <string name="fp_wake_and_unlock_title">Wake and unlock</string>
+    <string name="fp_wake_and_unlock_summary">Disabling this will make fingerprint sensor only work when screen is on</string>
+
 </resources>
