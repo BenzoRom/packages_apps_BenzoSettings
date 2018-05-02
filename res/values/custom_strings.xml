@@ -41,6 +41,7 @@
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="navigation_other_category">Other</string>
     <string name="power_buttons_category_title">Power button</string>
+    <string name="more_settings_title">More</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
@@ -930,7 +931,7 @@
 
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">Wakelock Blocker</string>
-    <string name="wakelock_blocker_summary">Block system wakelocks</string>
+    <string name="wakelock_blocker_summary">Block system wakelocks. Use with caution</string>
     <string name="wakelock_blocker_save">Save</string>
     <string name="wakelock_list_header">Available wakelocks</string>
     <string name="wakelock_blocker_reload">Reload</string>

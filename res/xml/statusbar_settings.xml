@@ -45,19 +45,6 @@
                 android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
      </Preference>
 
-     <ListPreference
-         android:key="systemui_theme_style"
-         android:title="@string/systemui_theme_style_title"
-         android:persistent="false"
-         android:entries="@array/systemui_theme_style_entries"
-         android:entryValues="@array/systemui_theme_style_values" />
-
-    <Preference
-         android:key="smart_pixels"
-         android:title="@string/smart_pixels_title"
-         android:summary="@string/smart_pixels_summary"
-         android:fragment="com.benzo.settings.SmartPixels" />
-
     <PreferenceCategory
         android:key="battery_settings"
         android:title="@string/battery_style_category"/>

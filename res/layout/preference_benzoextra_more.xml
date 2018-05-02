@@ -26,7 +26,7 @@
     android:focusable="true">
 
     <ImageView
-        android:src="@drawable/ic_settings_wakelock"
+        android:src="@drawable/ic_settings_more"
         android:layout_width="@dimen/dashboard_tile_image_size"
         android:layout_height="@dimen/dashboard_tile_image_size"
         android:scaleType="centerInside"

@@ -75,6 +75,14 @@
             android:layout="@layout/preference_benzoextra_lockscreen"
             />
 
+        <!-- More -->
+        <Preference
+            android:key="more_settings"
+            android:title="@string/more_settings_title" 
+            android:fragment="com.benzo.settings.MoreSettings"
+            android:layout="@layout/preference_benzoextra_more"
+            />
+
         <!-- Navigation Bar -->
         <Preference
             android:key="navbar_settings"
@@ -113,14 +121,6 @@
             android:title="@string/statusbar_settings_title"
             android:fragment="com.benzo.settings.StatusbarSettings" 
             android:layout="@layout/preference_benzoextra_statusbar" 
-            />
-
-        <!-- Wakelock blocker -->
-        <Preference
-            android:key="wakelock_blocker"
-            android:title="@string/wakelock_blocker_title"
-            android:fragment="com.benzo.settings.WakeLockBlocker"
-            android:layout="@layout/preference_benzoextra_wakelock" 
             />
 
         <!-- Weather -->
