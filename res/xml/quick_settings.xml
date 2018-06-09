@@ -46,6 +46,12 @@
             android:defaultValue="false"/>
 
         <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_carrier_text"
+            android:title="@string/qs_hide_carriertext_title"
+            android:summary="@string/qs_hide_carriertext_summary"
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
             android:key="qs_footer_show_settings"
             android:title="@string/qs_footer_settings_title"
             android:summary="@string/qs_footer_settings_summary"
