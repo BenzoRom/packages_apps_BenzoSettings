@@ -25,6 +25,12 @@
         android:summary="@string/adb_notify_summary"
         android:defaultValue="true" />
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="battery_fully_charged_notif"
+        android:title="@string/battery_fully_charged_notif_title"
+        android:summary="@string/battery_fully_charged_notif_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:title="@string/power_notifications_title"
         android:summary="@string/power_notifications_summary">

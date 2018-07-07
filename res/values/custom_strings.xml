@@ -960,4 +960,8 @@
     <string name="qs_hide_carriertext_title">Hide carrier text</string>
     <string name="qs_hide_carriertext_summary">Allow hiding quick settings header carrier text</string>
 
+    <!-- Battery fully charged -->
+    <string name="battery_fully_charged_notif_title">Battery fully charged</string>
+    <string name="battery_fully_charged_notif_summary">Show a notification when the battery is fully charged</string>
+
 </resources>
