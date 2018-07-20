@@ -639,4 +639,8 @@
     <string name="trigger_bottom_title">Height</string>
     <string name="trigger_bottom_summary">Height of the trigger area</string>
 
+    <!-- Ambient visualizer -->
+    <string name="ambient_visualizer_title">Ambient visualizer</string>
+    <string name="ambient_visualizer_summary">Shows white visualization bars on ambient display unless custom color is selected</string>
+
 </resources>
