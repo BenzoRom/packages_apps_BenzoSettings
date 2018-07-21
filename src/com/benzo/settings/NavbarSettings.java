@@ -36,6 +36,7 @@ import android.view.WindowManagerGlobal;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.benzo.settings.preference.SystemSettingSeekBarPreference;
+import com.benzo.settings.preference.SystemSettingSwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -55,6 +56,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BATT_BAR_HIGH_COLOR = "battery_bar_high_color";
     private static final String PREF_BATT_BAR_WIDTH = "battery_bar_thickness";
     private static final String PREF_BATT_ANIMATE = "battery_bar_animate";
+    private static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
+    private static final String USE_BOTTOM_GESTURE_NAVIGATION = "use_bottom_gesture_navigation";
 
     private SwitchPreference mKillAppLongPressBack;
     private SystemSettingSeekBarPreference mLongpressKillDelay;
@@ -68,6 +71,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mBatteryBarBatteryLowColor;
     private ColorPickerPreference mBatteryBarBatteryLowColorWarn;
     private ColorPickerPreference mBatteryBarBatteryHighColor;
+    private SystemSettingSwitchPreference mNavigationBarShow;
+    private SystemSettingSwitchPreference mUseBottomGestureNavigation;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -75,6 +80,20 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.navbar_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        // navigation bar show
+        mNavigationBarShow = (SystemSettingSwitchPreference) findPreference(NAVIGATION_BAR_SHOW);
+        mNavigationBarShow.setOnPreferenceChangeListener(this);
+        int navigationBarShow = Settings.System.getInt(getContentResolver(),
+                NAVIGATION_BAR_SHOW, 0);
+        mNavigationBarShow.setChecked(navigationBarShow != 0);
+
+        // use bottom gestures
+        mUseBottomGestureNavigation = (SystemSettingSwitchPreference) findPreference(USE_BOTTOM_GESTURE_NAVIGATION);
+        mUseBottomGestureNavigation.setOnPreferenceChangeListener(this);
+        int useBottomGestureNavigation = Settings.System.getInt(getContentResolver(),
+                USE_BOTTOM_GESTURE_NAVIGATION, 0);
+        mUseBottomGestureNavigation.setChecked(useBottomGestureNavigation != 0);
 
         // kill-app long press back
         mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
@@ -165,12 +184,24 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 Settings.System.BATTERY_BAR_THICKNESS, 1)) + "");
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
-        updateBatteryBarOptions();
+        updateNavigationBarOptions();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mKillAppLongPressBack) {
+        if (preference == mNavigationBarShow) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		NAVIGATION_BAR_SHOW, value ? 1 : 0);
+            updateNavigationBarOptions();
+            return true;
+        } else if (preference == mUseBottomGestureNavigation) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		USE_BOTTOM_GESTURE_NAVIGATION, value ? 1 : 0);
+            updateNavigationBarOptions();
+            return true;
+        } else if (preference == mKillAppLongPressBack) {
             boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(),
 		KILL_APP_LONGPRESS_BACK, value ? 1 : 0);
@@ -225,7 +256,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             int index = mBatteryBar.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.BATTERY_BAR_LOCATION, val);
             mBatteryBar.setSummary(mBatteryBar.getEntries()[index]);
-            updateBatteryBarOptions();
+            updateNavigationBarOptions();
             return true;
         } else if (preference == mBatteryBarStyle) {
             int val = Integer.parseInt((String) newValue);
@@ -256,9 +287,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         return false;
     }
 
-    private void updateBatteryBarOptions() {
+    private void updateNavigationBarOptions() {
         if (Settings.System.getInt(getActivity().getContentResolver(),
-            Settings.System.BATTERY_BAR_LOCATION, 0) == 0) {
+            Settings.System.NAVIGATION_BAR_SHOW, 0) == 0) {
             mBatteryBarStyle.setEnabled(false);
             mBatteryBarThickness.setEnabled(false);
             mBatteryBarChargingAnimation.setEnabled(false);
@@ -268,6 +299,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mBatteryBarBatteryLowColor.setEnabled(false);
             mBatteryBarBatteryHighColor.setEnabled(false);
             mBatteryBarBatteryLowColorWarn.setEnabled(false);
+            mUseBottomGestureNavigation.setEnabled(true);
         } else {
             mBatteryBarStyle.setEnabled(true);
             mBatteryBarThickness.setEnabled(true);
@@ -278,6 +310,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mBatteryBarBatteryLowColor.setEnabled(true);
             mBatteryBarBatteryHighColor.setEnabled(true);
             mBatteryBarBatteryLowColorWarn.setEnabled(true);
+            mUseBottomGestureNavigation.setEnabled(false);
         }
     }
 
