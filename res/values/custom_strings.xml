@@ -38,6 +38,8 @@
     <string name="app_ops_settings_title">App Ops</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="navigation_other_category">Other</string>
+    <string name="notifications_settings_benzo_title">Notifications</string>
+    <string name="lockscreen_settings_benzo_title">Lockscreen</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
