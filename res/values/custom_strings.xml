@@ -58,8 +58,6 @@
     <!-- Navbar Settings -->
     <string name="enable_navigation_bar_title">Enable navigation bar</string>
     <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
-    <string name="swap_navigation_keys_title">Swap back and recents</string>
-    <string name="swap_navigation_keys_summary">Switch the back and recent buttons with each other</string>
     <string name="use_bottom_gesture_title">Use swipe up gestures for navigation</string>
     <string name="use_bottom_gesture_summary">Must hide navbar. Swipe up from left/right is back. Swipe up center is home. Swipe up and hold is recents</string>
 
