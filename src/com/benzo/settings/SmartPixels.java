@@ -22,6 +22,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.PowerManager;
+import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.preference.ListPreference;
 import android.preference.SwitchPreference;
 import android.preference.Preference;
@@ -29,17 +31,21 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.provider.Settings;
 
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 import com.benzo.settings.preference.SystemSettingSwitchPreference;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SmartPixels extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "SmartPixels";
 
     private static final String ON_POWER_SAVE = "smart_pixels_on_power_save";
@@ -94,4 +100,22 @@ public class SmartPixels extends SettingsPreferenceFragment implements
         }
     }
 
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                     SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.smart_pixels;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }
