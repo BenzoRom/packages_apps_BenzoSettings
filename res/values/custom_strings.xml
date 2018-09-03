@@ -47,4 +47,18 @@
     <string name="qs_set_animation_duration">%1$s</string>
     <string name="qs_set_animation_interpolator">%1$s</string>
 
+    <!-- Lockscreen weather -->
+    <string name="lockscreen_weather_category">Weather</string>
+    <string name="lockscreen_weather_options_title">Service options</string>
+    <string name="lockscreen_weather_enabled_title">Show on lockscreen</string>
+    <string name="lockscreen_weather_enabled_summary">Show weather information on lockscreen and during doze</string>
+    <string name="lockscreen_weather_settings_title">Weather</string>
+    <string name="lockscreen_weather_settings_summary">Setup weather icon and service to show under clock</string>
+    <string name="weather_config_title">Weather service</string>
+    <string name="weather_config_summary">System service settings</string>
+    <string name="header_weather_title">Header view weather</string>
+    <string name="header_weather_summary">Enable notification panel header weather display</string>
+    <string name="weather_icon_pack_title">Condition icon pack</string>
+    <string name="weather_icon_pack_info_title">You can install new icon packs from play store by searching for \"Chronus icons\"</string>
+
 </resources>

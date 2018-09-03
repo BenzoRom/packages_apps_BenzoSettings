@@ -27,4 +27,12 @@
             android:layout="@layout/preference_benzoextra_quicksettings"
             />
 
+        <!-- Weather -->
+        <Preference
+            android:key="lockscreen_weather"
+            android:title="@string/lockscreen_weather_category"
+            android:fragment="com.benzo.settings.OmniJawsSettings"
+            android:layout="@layout/preference_benzoextra_weather"
+            />
+
 </PreferenceScreen>
