@@ -49,7 +49,7 @@
 
         <Preference
             android:key="vol_steps"
-            android:fragment="com.benzo.settings.benzo.VolumeStepsFragment"
+            android:fragment="com.benzo.settings.VolumeStepsFragment"
             android:title="@string/volume_steps_fragment_title"
             android:summary="@string/volume_steps_summary" />
 
