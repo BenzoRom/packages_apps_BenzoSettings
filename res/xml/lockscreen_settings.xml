@@ -90,4 +90,20 @@
             android:defaultValue="0xffffffff"
             android:dialogTitle="@string/lockscreen_visualizer_custom_color" />
 
+    <PreferenceCategory
+        android:key="lockscreen_weather"
+        android:title="@string/lockscreen_weather_category" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_weather_enabled"
+            android:title="@string/lockscreen_weather_enabled_title"
+            android:summary="@string/lockscreen_weather_enabled_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="omnijaws_settings"
+            android:title="@string/lockscreen_weather_settings_title"
+            android:summary="@string/lockscreen_weather_settings_summary"
+            android:fragment="com.benzo.settings.OmniJawsSettings" />
+
 </PreferenceScreen>
