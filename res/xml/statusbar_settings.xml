@@ -58,6 +58,13 @@
             android:entries="@array/battery_percent_entries"
             android:entryValues="@array/battery_percent_values" />
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="show_battery_percent_on_qsb"
+            android:title="@string/show_battery_percent_on_qsb"
+            android:summary="@string/show_battery_percent_on_qsb_summary"
+            android:dependency="status_bar_clock"
+            android:defaultValue="true" />
+
     <PreferenceCategory
         android:title="@string/status_bar_clock_title"/>
 
