@@ -37,12 +37,6 @@
         android:summary="@string/media_art_summary"
         android:defaultValue="true" />
 
-    <com.benzo.settings.preference.SecureSettingSwitchPreference
-        android:key="lockscreen_visualizer_enabled"
-        android:title="@string/lockscreen_visualizer_title"
-        android:summary="@string/lockscreen_visualizer_summary"
-        android:defaultValue="false" />
-
     <Preference
             android:title="@string/lockscreen_shortcuts_title"
             android:summary="@string/lockscreen_shortcuts_summary">
@@ -71,5 +65,29 @@
             android:title="@string/fprint_sucess_vib_title"
             android:summary="@string/fprint_sucess_vib_summary"
             android:defaultValue="true" />
+
+    <PreferenceCategory
+        android:key="lockscreen_visualizer"
+        android:title="@string/lockscreen_visualizer_category" />
+
+        <com.benzo.settings.preference.SecureSettingSwitchPreference
+            android:key="lockscreen_visualizer_enabled"
+            android:title="@string/lockscreen_visualizer_enable"
+            android:summary="@string/lockscreen_visualizer_enable_summary"
+            android:defaultValue="false" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="lock_screen_visualizer_use_custom_color"
+            android:title="@string/lockscreen_visualizer_enable_custom"
+            android:summary="@string/lockscreen_visualizer_enable_custom_summary"
+            android:dependency="lockscreen_visualizer_enabled"
+            android:defaultValue="false" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="lock_screen_visualizer_custom_color"
+            android:title="@string/battery_bar_color"
+            android:dependency="lock_screen_visualizer_use_custom_color"
+            android:defaultValue="0xffffffff"
+            android:dialogTitle="@string/lockscreen_visualizer_custom_color" />
 
 </PreferenceScreen>
