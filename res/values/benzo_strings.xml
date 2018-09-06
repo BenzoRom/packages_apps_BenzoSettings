@@ -174,7 +174,10 @@
     <string name="torch_power_button_gesture_summary">Longpress power button with screen off turns on torch</string>
 
     <!-- Lock screen visualizer -->
-    <string name="lockscreen_visualizer_title">Show music visualizer</string>
-    <string name="lockscreen_visualizer_summary">Show colored visualizer on lockscreen when music is playing</string>
+    <string name="lockscreen_visualizer_enable">Show music visualizer</string>
+    <string name="lockscreen_visualizer_enable_summary">Show colored visualizer on lockscreen when music is playing</string>
+    <string name="lockscreen_visualizer_enable_custom">Use custom color</string>
+    <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
+    <string name="lockscreen_visualizer_custom_color">Custom color</string>
 
 </resources>

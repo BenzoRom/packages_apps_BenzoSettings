@@ -17,6 +17,8 @@ package com.benzo.settings;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 
 import androidx.preference.Preference;
@@ -28,21 +30,46 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.android.internal.logging.nano.MetricsProto;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 @SearchIndexable
 public class VisualizerSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String VISUALIZER_CUSTOM_COLOR = "visualizer_custom_color";
+
+    private ColorPickerPreference mVisualizerColor;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.visualizer_settings);
+
+        // Custom color
+        mVisualizerColor = (ColorPickerPreference) findPreference(VISUALIZER_CUSTOM_COLOR);
+        int customColor = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.VISUALIZER_CUSTOM_COLOR, 0xff1976d2,
+                UserHandle.USER_CURRENT);
+        String customColorHex = String.format("#%08x", (0xff1976d2 & customColor));
+        mVisualizerColor.setSummary(customColorHex);
+        mVisualizerColor.setNewPreviewColor(customColor);
+        mVisualizerColor.setAlphaSliderEnabled(true);
+        mVisualizerColor.setOnPreferenceChangeListener(this);
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+     @Override
+     public boolean onPreferenceChange(Preference preference, Object newValue) {
+         if (preference == mVisualizerColor) {
+            String colorString = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            int colorInt = ColorPickerPreference.convertToColorInt(colorString);
+            Settings.Secure.putIntForUser(getActivity().getContentResolver(),
+                    Settings.Secure.VISUALIZER_CUSTOM_COLOR, colorInt,
+                    UserHandle.USER_CURRENT);
+            preference.setSummary(colorString);
+        }
         return true;
-    }
+     }
 
     @Override
     public int getMetricsCategory() {
