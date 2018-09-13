@@ -480,4 +480,8 @@
     <string name="burn_in_protection_interval_title">Interval of shift</string>
     <string name="burn_in_protection_interval_summary">How often to make icons shift</string>
 
+    <!-- StatusBar -->
+    <string name="use_old_mobiletype_title">Use old mobile signal</string>
+    <string name="use_old_mobiletype_summary">Use the mobile icons from oreo and before\nSystemUI will restart</string>
+
 </resources>

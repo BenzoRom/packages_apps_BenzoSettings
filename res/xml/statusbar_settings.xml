@@ -39,6 +39,12 @@
                 android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
     </Preference>
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+         android:key="use_old_mobiletype"
+         android:title="@string/use_old_mobiletype_title"
+         android:summary="@string/use_old_mobiletype_summary"
+         android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="battery_settings"
         android:title="@string/battery_style_category"/>
