@@ -28,6 +28,7 @@
     <string name="attention">Attention</string>
     <string name="reset">Reset</string>
     <string name="unit_percent">\u0025</string>
+    <string name="unit_x1000ms">x1000 ms</string>
 
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
@@ -41,6 +42,7 @@
     <string name="navigation_other_category">Other</string>
     <string name="notifications_settings_benzo_title">Notifications</string>
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
+    <string name="navigation_burnin_category">Burn-in Protection</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -471,5 +473,11 @@
     <!-- QS Panel alpha -->
     <string name="qs_panel_bg_alpha_title">Panel transparency</string>
     <string name="qs_panel_bg_alpha_summary">Change how much you can see through the quick settings panel</string>
+
+    <!-- Burn-in Protection -->
+    <string name="burn_in_protection_title">Enable</string>
+    <string name="burn_in_protection_summary">Shift navabr and statusbar icons to prevent burn-in</string>
+    <string name="burn_in_protection_interval_title">Interval of shift</string>
+    <string name="burn_in_protection_interval_summary">How often to make icons shift</string>
 
 </resources>
