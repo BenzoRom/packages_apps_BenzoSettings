@@ -61,6 +61,14 @@
             android:layout="@layout/preference_benzoextra_lockscreen"
             />
 
+        <!-- More -->
+        <Preference
+            android:key="more_settings"
+            android:title="@string/more_settings_title"
+            android:fragment="com.benzo.settings.MoreSettings"
+            android:layout="@layout/preference_benzoextra_more"
+            />
+
         <!-- Navigation Bar -->
         <Preference
             android:key="navbar_settings"
@@ -75,14 +83,6 @@
             android:fragment="com.benzo.settings.Notifications"
             android:title="@string/notifications_settings_benzo_title" 
             android:layout="@layout/preference_benzoextra_notifications"
-            />
-
-        <!-- Recents -->
-        <Preference
-            android:key="recents_settings"
-            android:title="@string/recents_settings_title"
-            android:fragment="com.benzo.settings.RecentsSettings"
-            android:layout="@layout/preference_benzoextra_recents"
             />
 
         <!-- Quick Settings -->

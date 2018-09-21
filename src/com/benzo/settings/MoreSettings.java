@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Benzo Rom
+ * Copyright (C) 2018 Benzo Rom
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,13 +39,13 @@ import com.android.internal.logging.nano.MetricsProto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentsSettings extends SettingsPreferenceFragment implements
+public class MoreSettings extends SettingsPreferenceFragment implements
         Indexable {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.recents_settings);
+        addPreferencesFromResource(R.xml.more_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
     }
 
