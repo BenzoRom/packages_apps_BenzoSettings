@@ -32,6 +32,12 @@
          android:defaultValue="false" />
 
     <com.benzo.settings.preference.SystemSettingSwitchPreference
+         android:key="statusbar_hide_notch"
+         android:title="@string/hide_notch_title"
+         android:summary="@string/hide_notch_summary"
+         android:defaultValue="false" />
+
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
          android:key="lockscreen_hide_status_bar"
          android:title="@string/lockscreen_hide_status_bar_title"
          android:summary="@string/lockscreen_hide_status_bar_summary"

@@ -74,6 +74,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private static final String BATTERY_PERCENT = "show_battery_percent";
 
     private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+    private static final String KEY_HIDE_NOTCH = "statusbar_hide_notch";
 
     private SystemSettingSwitchPreference mStatusBarClockShow;
     private SystemSettingSwitchPreference mStatusBarSecondsShow;
@@ -193,6 +194,14 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         // custom carrier label
         mCustomCarrierLabel = (PreferenceScreen) findPreference(CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
+
+        final String displayCutout = getResources().getString(
+                com.android.internal.R.string.config_mainBuiltInDisplayCutout);
+        if(displayCutout.isEmpty()) {
+            final Preference hideNotchPref =
+                (Preference) getPreferenceScreen().findPreference(KEY_HIDE_NOTCH);
+            getPreferenceScreen().removePreference(hideNotchPref);
+        }
     }
 
     @Override

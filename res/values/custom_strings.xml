@@ -570,4 +570,8 @@
     <string name="qs_footer_settings_title">Show Settings icon</string>
     <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
 
+    <!-- Hide notch -->
+    <string name="hide_notch_title">Hide notch</string>
+    <string name="hide_notch_summary">If enabled it hides notch and fills in side gaps</string>
+
 </resources>
