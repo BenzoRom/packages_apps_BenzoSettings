@@ -19,6 +19,16 @@
     android:key="omnijaws_settings"
     android:title="@string/weather_title">
 
+    <com.benzo.settings.preference.SystemSettingSwitchPreference
+        android:key="lockscreen_weather_enabled"
+        android:title="@string/lockscreen_weather_enabled_title"
+        android:summary="@string/lockscreen_weather_enabled_summary"
+        android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="lockscreen_weather_options"
+        android:title="@string/lockscreen_weather_options_title" />
+
         <PreferenceScreen
             android:title="@string/weather_config_title"
             android:summary="@string/weather_config_summary" >
@@ -36,4 +46,5 @@
             android:icon="@drawable/ic_info_outline_24dp"
             android:persistent="false"
             android:summary="@string/weather_icon_pack_info_title" />
+
 </PreferenceScreen>
