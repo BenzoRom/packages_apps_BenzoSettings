@@ -44,6 +44,7 @@
     <string name="notifications_settings_benzo_title">Notifications</string>
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
     <string name="navigation_burnin_category">Burn-in Protection</string>
+    <string name="oreo_recents_settings_category">Oreo Recent Apps</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -609,5 +610,9 @@
     <!-- Onehand UI mode -->
     <string name="statusbar_show_wifi_activity_title">Show Wi-Fi data indicators</string>
     <string name="statusbar_show_wifi_activity_summary">Show indicators when Wi-Fi is sending/receiving data like mobile</string>
+
+    <!-- Recents style -->
+    <string name="oreo_recents_title">Oreo recent apps</string>
+    <string name="oreo_recents_summary">Use the Oreo style recent apps instead of Pie\'s\nSystemUI will restart</string>
 
 </resources>

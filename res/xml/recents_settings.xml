@@ -28,4 +28,14 @@
                  android:targetClass="com.benzo.settings.hideappfromrecents.HAFRAppListActivity" />
      </Preference>
 
+    <PreferenceCategory
+        android:key="oreo_recents_settings_category"
+        android:title="@string/oreo_recents_settings_category"/>
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="recents_component"
+            android:title="@string/oreo_recents_title"
+            android:summary="@string/oreo_recents_summary"
+            android:defaultValue="false"/>
+
 </PreferenceScreen>
