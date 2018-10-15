@@ -62,7 +62,7 @@
         <!-- Navigation Bar -->
         <Preference
             android:key="navbar_settings"
-            android:title="@string/navbar_settings_title" 
+            android:title="@string/navbar_settings_title"
             android:fragment="com.benzo.settings.NavbarSettings"
             android:layout="@layout/preference_benzoextra_navbar"
             />
@@ -71,8 +71,16 @@
        <Preference
             android:key="benzo_notifications_category"
             android:fragment="com.benzo.settings.Notifications"
-            android:title="@string/notifications_settings_benzo_title" 
+            android:title="@string/notifications_settings_benzo_title"
             android:layout="@layout/preference_benzoextra_notifications"
+            />
+
+       <!-- Pie Controls -->
+       <Preference
+            android:key="benzo_pie_category"
+            android:fragment="com.benzo.settings.PieSettings"
+            android:title="@string/pa_pie_control_title"
+            android:layout="@layout/preference_benzoextra_pie"
             />
 
         <!-- Privacy Guard -->
