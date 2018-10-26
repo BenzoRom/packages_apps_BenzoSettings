@@ -603,4 +603,8 @@
     <string name="status_bar_temperature_hide_scale_hide_image">Show temp without scale</string>
     <string name="status_bar_show_image">Show image</string>
 
+    <!-- Onehand UI mode -->
+    <string name="statusbar_show_wifi_activity_title">Show Wi-Fi data indicators</string>
+    <string name="statusbar_show_wifi_activity_summary">Show indicators when Wi-Fi is sending/receiving data like mobile</string>
+
 </resources>
