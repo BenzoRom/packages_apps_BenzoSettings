@@ -15,6 +15,7 @@
  */
 package com.benzo.settings;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.content.Context;

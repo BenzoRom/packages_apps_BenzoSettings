@@ -15,6 +15,7 @@
  */
 package com.benzo.settings;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.content.Context;
@@ -63,7 +64,7 @@ public class MoreSettings extends SettingsPreferenceFragment implements
                     ArrayList<SearchIndexableResource> result =
                             new ArrayList<SearchIndexableResource>();
                      SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.smart_pixels;
+                    sir.xmlResId = R.xml.more_settings;
                     result.add(sir);
                     return result;
                 }
