@@ -29,6 +29,9 @@
     <string name="reset">Reset</string>
     <string name="unit_percent">\u0025</string>
     <string name="unit_x1000ms">x1000 ms</string>
+    <string name="unit_msec">ms</string>
+    <string name="unit_dpi">dpi</string>
+    <string name="unit_px">px</string>
 
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
@@ -63,8 +66,14 @@
     <!-- Navbar Settings -->
     <string name="enable_navigation_bar_title">Enable navigation bar</string>
     <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
+    <!-- Navbar gestures -->
+    <string name="use_bottom_gesture_cat">Swipe up gestures</string>
     <string name="use_bottom_gesture_title">Use swipe up gestures for navigation</string>
     <string name="use_bottom_gesture_summary">Must hide navbar. Swipe up from left/right is back. Swipe up center is home. Swipe up and hold is recents</string>
+    <string name="gesture_swipe_length_title">Swipe trigger height</string>
+    <string name="gesture_swipe_length_summary">Heigth from bottom to trigger swipe</string>
+    <string name="gesture_action_timeout_title">Swipe trigger timeout</string>
+    <string name="gesture_action_timeout_summary">Timeout before the gesture action is started</string>
 
     <!-- QuickSettings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>

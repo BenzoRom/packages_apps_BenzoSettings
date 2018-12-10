@@ -30,7 +30,9 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManagerGlobal;
 
@@ -64,6 +66,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BATT_ANIMATE = "battery_bar_animate";
     private static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
     private static final String USE_BOTTOM_GESTURE_NAVIGATION = "use_bottom_gesture_navigation";
+    private static final String KEY_SWIPE_LENGTH = "gesture_swipe_length";
+    private static final String KEY_SWIPE_TIMEOUT = "gesture_swipe_timeout";
 
     private SwitchPreference mKillAppLongPressBack;
     private SystemSettingSeekBarPreference mLongpressKillDelay;
@@ -79,6 +83,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mBatteryBarBatteryHighColor;
     private SystemSettingSwitchPreference mNavigationBarShow;
     private SystemSettingSwitchPreference mUseBottomGestureNavigation;
+    private SystemSettingSeekBarPreference mSwipeTriggerLength;
+    private SystemSettingSeekBarPreference mSwipeTriggerTimeout;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -100,6 +106,18 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         int useBottomGestureNavigation = Settings.System.getInt(getContentResolver(),
                 USE_BOTTOM_GESTURE_NAVIGATION, 0);
         mUseBottomGestureNavigation.setChecked(useBottomGestureNavigation != 0);
+
+        mSwipeTriggerLength = (SystemSettingSeekBarPreference) findPreference(KEY_SWIPE_LENGTH);
+        int triggerLength = Settings.System.getInt(resolver, Settings.System.BOTTOM_GESTURE_SWIPE_LIMIT,
+                getSwipeLengthInPixel(getResources().getInteger(com.android.internal.R.integer.nav_gesture_swipe_min_length)));
+        mSwipeTriggerLength.setValue(triggerLength);
+        mSwipeTriggerLength.setOnPreferenceChangeListener(this);
+
+        mSwipeTriggerTimeout = (SystemSettingSeekBarPreference) findPreference(KEY_SWIPE_TIMEOUT);
+        int triggerTimeout = Settings.System.getInt(resolver, Settings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT,
+                getResources().getInteger(com.android.internal.R.integer.nav_gesture_swipe_timout));
+        mSwipeTriggerTimeout.setValue(triggerTimeout);
+        mSwipeTriggerTimeout.setOnPreferenceChangeListener(this);
 
         // kill-app long press back
         mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
@@ -210,6 +228,16 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
 		USE_BOTTOM_GESTURE_NAVIGATION, value ? 1 : 0);
             updateNavigationBarOptions();
             return true;
+        } else if (preference == mSwipeTriggerLength) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.BOTTOM_GESTURE_SWIPE_LIMIT, value);
+            return true;
+        } else if (preference == mSwipeTriggerTimeout) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT, value);
+            return true;
         } else if (preference == mKillAppLongPressBack) {
             boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(),
@@ -300,8 +328,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         if (Settings.System.getInt(getActivity().getContentResolver(),
             Settings.System.NAVIGATION_BAR_SHOW, 0) == 0) {
             mUseBottomGestureNavigation.setEnabled(true);
+            mSwipeTriggerLength.setEnabled(true);
+            mSwipeTriggerTimeout.setEnabled(true);
         } else {
             mUseBottomGestureNavigation.setEnabled(false);
+            mSwipeTriggerLength.setEnabled(true);
+            mSwipeTriggerTimeout.setEnabled(true);
         }
     }
 
@@ -328,6 +360,10 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mBatteryBarBatteryHighColor.setEnabled(true);
             mBatteryBarBatteryLowColorWarn.setEnabled(true);
         }
+    }
+
+    private int getSwipeLengthInPixel(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     @Override
