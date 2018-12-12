@@ -48,6 +48,7 @@
     <string name="lockscreen_settings_benzo_title">Lockscreen</string>
     <string name="navigation_burnin_category">Burn-in Protection</string>
     <string name="oreo_recents_settings_category">Oreo Recent Apps</string>
+    <string name="quick_settings_pulldown_title">Pulldown Options</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

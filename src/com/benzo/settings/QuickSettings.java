@@ -86,7 +86,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mTileAnimationDuration.setOnPreferenceChangeListener(this);
 
         mTileAnimationInterpolator = (ListPreference) findPreference(PREF_TILE_ANIM_INTERPOLATOR);
-        int tileAnimationInterpolator = Settings.System.getIntForUser(getContentResolver(),
+        int tileAnimationInterpolator = Settings.System.getIntForUser(resolver,
                 Settings.System.ANIM_TILE_INTERPOLATOR, 0, UserHandle.USER_CURRENT);
         mTileAnimationInterpolator.setValue(String.valueOf(tileAnimationInterpolator));
         updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
@@ -109,7 +109,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         // QS Panel alpha
         mQSPanelAlpha = (SystemSettingSeekBarPreference) findPreference(KEY_QS_PANEL_BG_ALPHA);
-        final int panelAlpha = Settings.System.getInt(getContentResolver(),
+        final int panelAlpha = Settings.System.getInt(resolver,
                 Settings.System.QS_PANEL_BG_ALPHA, 255);
         mQSPanelAlpha.setValue((int)(((double) panelAlpha / 255) * 100));
         mQSPanelAlpha.setOnPreferenceChangeListener(this);
@@ -151,7 +151,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mQSPanelAlpha) {
             Integer panelAlpha = (Integer) newValue;
             int realPanelAlpha = (int) (((double) panelAlpha / 100) * 255);
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(resolver,
                     Settings.System.QS_PANEL_BG_ALPHA, realPanelAlpha);
             return true;
         }

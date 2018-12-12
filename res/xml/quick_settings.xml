@@ -47,6 +47,22 @@
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
 
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_footer_show_settings"
+            android:title="@string/qs_footer_settings_title"
+            android:summary="@string/qs_footer_settings_summary"
+            android:defaultValue="true" />
+
+        <com.benzo.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_footer_show_services"
+            android:title="@string/qs_footer_services_title"
+            android:summary="@string/qs_footer_services_summary"
+            android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="quick_settings_pulldown"
+        android:title="@string/quick_settings_pulldown_title"/>
+
         <ListPreference
             android:key="quick_pulldown"
             android:title="@string/quick_pulldown_title"
@@ -60,18 +76,6 @@
             android:entries="@array/smart_pulldown_entries"
             android:entryValues="@array/smart_pulldown_values"
             android:persistent="false" />
-
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
-            android:key="qs_footer_show_settings"
-            android:title="@string/qs_footer_settings_title"
-            android:summary="@string/qs_footer_settings_summary"
-            android:defaultValue="true" />
-
-        <com.benzo.settings.preference.SystemSettingSwitchPreference
-            android:key="qs_footer_show_services"
-            android:title="@string/qs_footer_services_title"
-            android:summary="@string/qs_footer_services_summary"
-            android:defaultValue="false" />
 
     <PreferenceCategory
         android:key="quick_settings_animations"

@@ -59,7 +59,6 @@ public class SmartPixels extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.smart_pixels);
-
         resolver = getActivity().getContentResolver();
 
         mSmartPixelsOnPowerSave = (SystemSettingSwitchPreference) findPreference(ON_POWER_SAVE);

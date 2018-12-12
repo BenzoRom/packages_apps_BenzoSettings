@@ -96,14 +96,14 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         // navigation bar show
         mNavigationBarShow = (SystemSettingSwitchPreference) findPreference(NAVIGATION_BAR_SHOW);
         mNavigationBarShow.setOnPreferenceChangeListener(this);
-        int navigationBarShow = Settings.System.getInt(getContentResolver(),
+        int navigationBarShow = Settings.System.getInt(resolver,
                 NAVIGATION_BAR_SHOW, 0);
         mNavigationBarShow.setChecked(navigationBarShow != 0);
 
         // use bottom gestures
         mUseBottomGestureNavigation = (SystemSettingSwitchPreference) findPreference(USE_BOTTOM_GESTURE_NAVIGATION);
         mUseBottomGestureNavigation.setOnPreferenceChangeListener(this);
-        int useBottomGestureNavigation = Settings.System.getInt(getContentResolver(),
+        int useBottomGestureNavigation = Settings.System.getInt(resolver,
                 USE_BOTTOM_GESTURE_NAVIGATION, 0);
         mUseBottomGestureNavigation.setChecked(useBottomGestureNavigation != 0);
 
@@ -122,13 +122,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         // kill-app long press back
         mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
         mKillAppLongPressBack.setOnPreferenceChangeListener(this);
-        int killAppLongPressBack = Settings.Secure.getInt(getContentResolver(),
+        int killAppLongPressBack = Settings.Secure.getInt(resolver,
                 KILL_APP_LONGPRESS_BACK, 0);
         mKillAppLongPressBack.setChecked(killAppLongPressBack != 0);
 
         // kill-app long press back delay
         mLongpressKillDelay = (SystemSettingSeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
-        int killconf = Settings.System.getInt(getContentResolver(),
+        int killconf = Settings.System.getInt(resolver,
                 Settings.System.LONG_PRESS_KILL_DELAY, 1000);
         mLongpressKillDelay.setValue(killconf);
         mLongpressKillDelay.setOnPreferenceChangeListener(this);
@@ -218,13 +218,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mNavigationBarShow) {
             boolean value = (Boolean) newValue;
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(resolver,
 		NAVIGATION_BAR_SHOW, value ? 1 : 0);
             updateNavigationBarOptions();
             return true;
         } else if (preference == mUseBottomGestureNavigation) {
             boolean value = (Boolean) newValue;
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(resolver,
 		USE_BOTTOM_GESTURE_NAVIGATION, value ? 1 : 0);
             updateNavigationBarOptions();
             return true;
@@ -240,12 +240,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mKillAppLongPressBack) {
             boolean value = (Boolean) newValue;
-            Settings.Secure.putInt(getContentResolver(),
+            Settings.Secure.putInt(resolver,
 		KILL_APP_LONGPRESS_BACK, value ? 1 : 0);
             return true;
         } else if (preference == mLongpressKillDelay) {
             int killconf = (Integer) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(resolver,
                     Settings.System.LONG_PRESS_KILL_DELAY, killconf);
             return true;
         } else if (preference == mBatteryBarColor) {
