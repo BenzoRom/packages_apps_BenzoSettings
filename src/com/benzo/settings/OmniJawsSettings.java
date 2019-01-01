@@ -18,6 +18,7 @@
 
 package com.benzo.settings;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -53,9 +54,11 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
     private static final String DEFAULT_WEATHER_ICON_PREFIX = "outline";
     private static final String WEATHER_SERVICE_PACKAGE = "org.omnirom.omnijaws";
     private static final String CHRONUS_ICON_PACK_INTENT = "com.dvtonder.chronus.ICON_PACK";
+    private static final String STATUS_BAR_WEATHER = "statusbar_show_weather_temp";
 
     private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
+    private ListPreference mStatusbarWeather;
 
     @Override
     public int getMetricsCategory() {
@@ -66,13 +69,21 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.omnijaws_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mStatusbarWeather = (ListPreference) findPreference(STATUS_BAR_WEATHER);
+        int statusbarWeather = Settings.System.getInt(resolver,
+                Settings.System.STATUSBAR_SHOW_WEATHER_TEMP, 0);
+        mStatusbarWeather.setValue(String.valueOf(statusbarWeather));
+        mStatusbarWeather.setSummary(mStatusbarWeather.getEntry());
+        mStatusbarWeather.setOnPreferenceChangeListener(this);
 
         mWeatherCategory = (PreferenceCategory) prefScreen.findPreference(CATEGORY_WEATHER);
         if (mWeatherCategory != null) {
             prefScreen.removePreference(mWeatherCategory);
         } else {
-            String settingHeaderPackage = Settings.System.getString(getContentResolver(),
+            String settingHeaderPackage = Settings.System.getString(resolver,
                     Settings.System.OMNIJAWS_WEATHER_ICON_PACK);
             if (settingHeaderPackage == null) {
                 settingHeaderPackage = DEFAULT_WEATHER_ICON_PACKAGE + "." + DEFAULT_WEATHER_ICON_PREFIX;
@@ -89,7 +100,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
             if (valueIndex == -1) {
                 // no longer found
                 settingHeaderPackage = DEFAULT_WEATHER_ICON_PACKAGE + "." + DEFAULT_WEATHER_ICON_PREFIX;
-                Settings.System.putString(getContentResolver(),
+                Settings.System.putString(resolver,
                         Settings.System.OMNIJAWS_WEATHER_ICON_PACK, settingHeaderPackage);
                 valueIndex = mWeatherIconPack.findIndexOfValue(settingHeaderPackage);
             }
@@ -102,12 +113,20 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mWeatherIconPack) {
             String value = (String) objValue;
-            Settings.System.putString(getContentResolver(),
+            Settings.System.putString(getActivity().getContentResolver(),
                     Settings.System.OMNIJAWS_WEATHER_ICON_PACK, value);
             int valueIndex = mWeatherIconPack.findIndexOfValue(value);
             mWeatherIconPack.setSummary(mWeatherIconPack.getEntries()[valueIndex]);
+            return true;
+        } else if (preference == mStatusbarWeather) {
+            int showStatusbar = Integer.parseInt((String) objValue);
+            int index = mStatusbarWeather.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_SHOW_WEATHER_TEMP, showStatusbar);
+            mStatusbarWeather.setSummary(mStatusbarWeather.getEntries()[index]);
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void getAvailableWeatherIconPacks(List<String> entries, List<String> values) {
@@ -152,7 +171,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
             "enabled"
         };
 
-        final Cursor c = getContentResolver().query(SETTINGS_URI, SETTINGS_PROJECTION,
+        final Cursor c = getActivity().getContentResolver().query(SETTINGS_URI, SETTINGS_PROJECTION,
                 null, null, null);
         if (c != null) {
             int count = c.getCount();

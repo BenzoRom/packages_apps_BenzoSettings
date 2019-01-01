@@ -586,7 +586,7 @@
     <string name="lockscreen_weather_category">Weather</string>
     <string name="lockscreen_weather_options_title">Service options</string>
     <string name="lockscreen_weather_enabled_title">Show on lockscreen</string>
-    <string name="lockscreen_weather_enabled_summary">Show weather information on lockscreen and during doze</string>
+    <string name="lockscreen_weather_enabled_summary">Show weather on lockscreen and during doze under the clock like on stock builds</string>
     <string name="lockscreen_weather_show_city_title">Show city name</string>
     <string name="lockscreen_weather_show_city_summary">Show name of current city on left of image</string>
     <string name="lockscreen_weather_show_temp_title">Show temperature</string>
@@ -605,7 +605,7 @@
 
     <!-- StatusBar weather settings -->
     <string name="statusbar_weather_cat">Statusbar Weather</string>
-    <string name="statusbar_weather_title">Layout style</string>
+    <string name="statusbar_weather_title">Statusbar Weather</string>
     <string name="statusbar_weather_summary">Show weather temp and or image on the status bar</string>
     <string name="statusbar_weather_dialog_title">Status bar weather style</string>
     <string name="status_bar_weather_hidden">Hide weather</string>
