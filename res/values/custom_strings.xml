@@ -668,4 +668,8 @@
     <string name="pa_pie_gravity_right">Right</string>
     <string name="pa_pie_gravity_left">Left</string>
 
+    <!-- QS Show drag handle -->
+    <string name="qs_show_drag_handle_title">Show drag handle</string>
+    <string name="qs_show_drag_handle_summary">Show the little handle under the qs tiles when viewing the quick tiles</string>
+
 </resources>
