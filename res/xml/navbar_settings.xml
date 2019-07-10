@@ -80,6 +80,17 @@
             android:dependency="use_bottom_gesture_navigation"
             android:persistent="false" />
 
+        <com.benzo.settings.preference.SystemSettingSeekBarPreference
+            android:key="gesture_swipe_start"
+            android:title="@string/gesture_swipe_start_title"
+            android:summary="@string/gesture_swipe_start_summary"
+            android:max="50"
+            android:min="20"
+            benzo:unitsLeft=""
+            benzo:unitsRight="@string/unit_px"
+            android:dependency="use_bottom_gesture_navigation"
+            android:persistent="false" />
+
     <PreferenceCategory
         android:key="navigation_burnin"
         android:title="@string/navigation_burnin_category"/>

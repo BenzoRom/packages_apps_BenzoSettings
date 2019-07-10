@@ -71,8 +71,10 @@
     <string name="use_bottom_gesture_cat">Swipe up gestures</string>
     <string name="use_bottom_gesture_title">Use swipe up gestures for navigation</string>
     <string name="use_bottom_gesture_summary">Must hide navbar. Swipe up from left/right is back. Swipe up center is home. Swipe up and hold is recents</string>
-    <string name="gesture_swipe_length_title">Swipe trigger height</string>
-    <string name="gesture_swipe_length_summary">Heigth from bottom to trigger swipe</string>
+    <string name="gesture_swipe_length_title">Swipe trigger length</string>
+    <string name="gesture_swipe_length_summary">Length of the swipe required to trigger gesture</string>
+    <string name="gesture_swipe_start_title">Swipe trigger start height</string>
+    <string name="gesture_swipe_start_summary">Minimum height from bottom to start triggering gesture</string>
     <string name="gesture_action_timeout_title">Swipe trigger timeout</string>
     <string name="gesture_action_timeout_summary">Timeout before the gesture action is started</string>
 

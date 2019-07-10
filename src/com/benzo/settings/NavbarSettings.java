@@ -68,6 +68,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String USE_BOTTOM_GESTURE_NAVIGATION = "use_bottom_gesture_navigation";
     private static final String KEY_SWIPE_LENGTH = "gesture_swipe_length";
     private static final String KEY_SWIPE_TIMEOUT = "gesture_swipe_timeout";
+    private static final String KEY_SWIPE_START = "gesture_swipe_start";
 
     private SwitchPreference mKillAppLongPressBack;
     private SystemSettingSeekBarPreference mLongpressKillDelay;
@@ -85,6 +86,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mUseBottomGestureNavigation;
     private SystemSettingSeekBarPreference mSwipeTriggerLength;
     private SystemSettingSeekBarPreference mSwipeTriggerTimeout;
+    private SystemSettingSeekBarPreference mSwipeTriggerStart;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -118,6 +120,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 getResources().getInteger(com.android.internal.R.integer.nav_gesture_swipe_timout));
         mSwipeTriggerTimeout.setValue(triggerTimeout);
         mSwipeTriggerTimeout.setOnPreferenceChangeListener(this);
+
+        mSwipeTriggerStart = (SystemSettingSeekBarPreference) findPreference(KEY_SWIPE_START);
+        int triggerStart = Settings.System.getInt(resolver, Settings.System.BOTTOM_GESTURE_SWIPE_START,
+                getSwipeLengthInPixel(getResources().getInteger(com.android.internal.R.integer.nav_gesture_swipe_start)));
+        mSwipeTriggerStart.setValue(triggerStart);
+        mSwipeTriggerStart.setOnPreferenceChangeListener(this);
 
         // kill-app long press back
         mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
@@ -237,6 +245,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             int value = (Integer) newValue;
             Settings.System.putInt(resolver,
                     Settings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT, value);
+            return true;
+        } else if (preference == mSwipeTriggerStart) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.BOTTOM_GESTURE_SWIPE_START, value);
             return true;
         } else if (preference == mKillAppLongPressBack) {
             boolean value = (Boolean) newValue;
