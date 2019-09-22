@@ -30,6 +30,8 @@
     <!-- Benzo Extras -->
     <string name="benzo_settings_title">Benzo Extras</string>
     <string name="button_settings_title">Buttons</string>
+    <string name="power_button_category_title">Power Button</string>
+    <string name="volume_button_category_title">Volume Button</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="quicksettings_title">Quick Settings</string>
 
