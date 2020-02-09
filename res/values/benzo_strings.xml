@@ -34,6 +34,7 @@
     <string name="quicksettings_title">Quick Settings</string>
     <string name="power_button_category_title">Power Button</string>
     <string name="statusbar_settings_title">Statusbar</string>
+    <string name="lock_screen_settings_title">Lockscreen</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
