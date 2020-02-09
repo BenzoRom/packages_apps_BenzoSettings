@@ -34,6 +34,7 @@
     <string name="volume_button_category_title">Volume Button</string>
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="quicksettings_title">Quick Settings</string>
+    <string name="lock_screen_settings_title">Lockscreen</string>
 
     <!-- QuickSettings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>
