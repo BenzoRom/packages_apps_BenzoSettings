@@ -20,16 +20,6 @@
     android:title="@string/global_actions_title" >
 
     <com.benzo.settings.preference.SystemSettingSwitchPreference
-        android:key="global_actions_power"
-        android:title="@string/global_actions_power"
-        android:defaultValue="true" />
-
-    <com.benzo.settings.preference.SystemSettingSwitchPreference
-        android:key="global_actions_restart"
-        android:title="@string/global_actions_restart"
-        android:defaultValue="true" />
-
-    <com.benzo.settings.preference.SystemSettingSwitchPreference
         android:key="global_actions_screenshot"
         android:title="@string/global_actions_screenshot"
         android:defaultValue="false" />
