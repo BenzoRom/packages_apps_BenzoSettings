@@ -33,6 +33,7 @@
     <string name="button_settings_volume_title">Volume Buttons</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="power_button_category_title">Power Button</string>
+    <string name="statusbar_settings_title">Statusbar</string>
 
     <!-- QuickSettings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>

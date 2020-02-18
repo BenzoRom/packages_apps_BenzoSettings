@@ -35,4 +35,12 @@
             android:layout="@layout/preference_benzoextra_quicksettings"
             />
 
+        <!-- Statusbar -->
+        <Preference
+            android:key="statusbar_settings"
+            android:title="@string/statusbar_settings_title"
+            android:fragment="com.benzo.settings.StatusbarSettings"
+            android:layout="@layout/preference_benzoextra_statusbar"
+            />
+
 </PreferenceScreen>
