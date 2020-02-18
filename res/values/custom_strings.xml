@@ -35,6 +35,7 @@
     <string name="keyboard_ime_title">Keyboard and IME</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="lock_screen_settings_title">Lockscreen</string>
+    <string name="statusbar_settings_title">Statusbar</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
