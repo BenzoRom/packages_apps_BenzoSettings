@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SearchIndexable
 public class StatusbarSettings extends SettingsPreferenceFragment {
 
     @Override
