@@ -32,6 +32,12 @@
         <intent android:action="com.android.settings.action.LOCK_SCREEN_TUNER" />
     </PreferenceScreen>
 
+    <com.benzo.settings.preference.SecureSettingSwitchPreference
+        android:key="lock_screen_transparent_notifications_enabled"
+        android:title="@string/transparent_lockscreen_notification_title"
+        android:summary="@string/transparent_lockscreen_notification_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="lockscreen_visualizer"
         android:title="@string/lockscreen_visualizer_category" />
