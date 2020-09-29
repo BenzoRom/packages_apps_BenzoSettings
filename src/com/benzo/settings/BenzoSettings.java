@@ -50,6 +50,7 @@ public class BenzoSettings extends SettingsPreferenceFragment {
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
+
                 @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
@@ -60,8 +61,8 @@ public class BenzoSettings extends SettingsPreferenceFragment {
 
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
-                    final List<String> keys = super.getNonIndexableKeys(context);
-                    return keys;
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
                 }
             };
 }

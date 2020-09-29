@@ -213,8 +213,8 @@ public class VolumeStepsFragment extends SettingsPreferenceFragment implements
 
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
-                    final List<String> keys = super.getNonIndexableKeys(context);
-                    return keys;
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
                 }
             };
 }
