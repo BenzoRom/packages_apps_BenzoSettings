@@ -20,8 +20,6 @@ import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
