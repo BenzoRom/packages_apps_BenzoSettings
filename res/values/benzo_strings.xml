@@ -138,4 +138,8 @@
     <string name="power_menu_hide_on_secure_title">Hide on lockscreen</string>
     <string name="power_menu_hide_on_secure_summary">Hide the power menu on a secure lockscreen</string>
 
+    <!-- Activity indicators -->
+    <string name="status_bar_activity_indicators_title">Show activity indicators</string>
+    <string name="status_bar_activity_indicators_summary">Show up and down icons on mobile and wifi icons when data is used</string>
+
 </resources>
