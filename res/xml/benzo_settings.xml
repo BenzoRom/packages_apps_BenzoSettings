@@ -55,4 +55,13 @@
         android:fragment="com.benzo.settings.StatusbarSettings"
         />
 
+    <!-- Visualizer -->
+    <Preference
+        android:id="@+id/visualizer_settings"
+        android:title="@string/benzo_settings_visualizer_title"
+        android:layout="@layout/preference_benzosettings_main"
+        android:icon="@drawable/ic_settings_visualizer"
+        android:fragment="com.benzo.settings.VisualizerSettings"
+        />
+
 </PreferenceScreen>
