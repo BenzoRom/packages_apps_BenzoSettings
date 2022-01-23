@@ -87,7 +87,7 @@
             android:key="global_actions_max_columns"
             android:title="@string/global_actions_max_columns_title"
             android:summary="@string/global_actions_max_columns_summary"
-            android:max="8"
+            android:max="4"
             android:min="1"
             android:defaultValue="2"/>
 
@@ -95,7 +95,7 @@
             android:key="global_actions_max_rows"
             android:title="@string/global_actions_max_rows_title"
             android:summary="@string/global_actions_max_rows_summary"
-            android:max="8"
+            android:max="6"
             android:min="1"
             android:defaultValue="4"/>
 
