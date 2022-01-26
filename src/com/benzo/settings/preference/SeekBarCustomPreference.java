@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,8 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 
-public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekBarChangeListener {
+public class SeekBarCustomPreference extends Preference implements
+        SeekBar.OnSeekBarChangeListener {
 
     private final String TAG = getClass().getName();
 
@@ -34,15 +36,14 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     private static final String BENZONS = "http://schemas.android.com/apk/res-auto";
     private static final int DEFAULT_VALUE = 50;
 
-    private int mMaxValue      = 100;
-    private int mMinValue      = 0;
-    private int mInterval      = 1;
-    private int mDefaultValue  = -1;
+    private int mMaxValue = 100;
+    private int mMinValue = 0;
+    private int mInterval = 1;
+    private int mDefaultValue = -1;
     private int mCurrentValue;
-    private String mUnitsLeft  = "";
+    private String mUnitsLeft = "";
     private String mUnitsRight = "";
     private SeekBar mSeekBar;
-    //private TextView mTitle;
     private TextView mUnitsLeftText;
     private TextView mUnitsRightText;
     private ImageView mImagePlus;
@@ -57,13 +58,13 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     private int mPopupWidth = 0;
     private boolean initialised = false;
 
-    public SeekBarPreferenceCham(Context context, AttributeSet attrs) {
+    public SeekBarCustomPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayoutResource(R.layout.seek_bar_preference);
         setValuesFromXml(attrs, context);
     }
 
-    public SeekBarPreferenceCham(Context context, AttributeSet attrs, int defStyle) {
+    public SeekBarCustomPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setLayoutResource(R.layout.seek_bar_preference);
         setValuesFromXml(attrs, context);
@@ -71,8 +72,8 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
 
     private void setValuesFromXml(AttributeSet attrs, Context context) {
         final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.SeekBarPreference);
-
+                attrs, R.styleable.SeekBarCustomPreference
+        );
         mMaxValue = attrs.getAttributeIntValue(ANDROIDNS, "max", 100);
         mMinValue = attrs.getAttributeIntValue(ANDROIDNS, "min", 0);
         mDefaultValue = attrs.getAttributeIntValue(ANDROIDNS, "defaultValue", -1);
@@ -82,38 +83,39 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
                     "\" does not have a default value set in xml, assuming " + mDefaultValue +
                     " until further changes");
         }
-        if (mDefaultValue < mMinValue || mDefaultValue > mMaxValue) {
-            throw new IllegalArgumentException("Default value is out of range!");
+        if (mDefaultValue < mMinValue) {
+            mDefaultValue = mMinValue;
+        }
+        if (mDefaultValue > mMaxValue) {
+            mDefaultValue = mMaxValue;
         }
         mUnitsLeft = getAttributeStringValue(attrs, BENZONS, "unitsLeft", "");
         mUnitsRight = getAttributeStringValue(attrs, BENZONS, "unitsRight", "");
-        Integer idR = a.getResourceId(R.styleable.SeekBarPreference_unitsRight, 0);
+        Integer idR = a.getResourceId(R.styleable.SeekBarCustomPreference_unitsRight, 0);
         if (idR > 0) {
             mUnitsRight = context.getResources().getString(idR);
         }
-        Integer idL = a.getResourceId(R.styleable.SeekBarPreference_unitsLeft, 0);
+        Integer idL = a.getResourceId(R.styleable.SeekBarCustomPreference_unitsLeft, 0);
         if (idL > 0) {
             mUnitsLeft = context.getResources().getString(idL);
         }
         try {
             String newInterval = attrs.getAttributeValue(BENZONS, "interval");
-            if(newInterval != null)
-                mInterval = Integer.parseInt(newInterval);
-        }
-        catch(Exception e) {
+            if(newInterval != null) mInterval = Integer.parseInt(newInterval);
+        } catch(Exception e) {
             Log.e(TAG, "Invalid interval value", e);
         }
 
-        mThumbDefaultValueColor = a.getColor(
-                R.styleable.SeekBarPreference_thumb_default_value_color, 0xff000000);
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(android.R.attr.colorAccent, typedValue, true);
+        mThumbDefaultValueColor = typedValue.data;
         a.recycle();
     }
 
-    private String getAttributeStringValue(AttributeSet attrs, String namespace, String name, String defaultValue) {
+    private String getAttributeStringValue(AttributeSet attrs, String namespace,
+                String name, String defaultValue) {
         String value = attrs.getAttributeValue(namespace, name);
-        if(value == null)
-            value = defaultValue;
-
+        if(value == null) { value = defaultValue; }
         return value;
     }
 
@@ -121,8 +123,6 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     public void onDependencyChanged(Preference dependency, boolean disableDependent) {
         super.onDependencyChanged(dependency, disableDependent);
         this.setShouldDisableView(true);
-        //if (mTitle != null)
-        //    mTitle.setEnabled(!disableDependent);
         if (mSeekBar != null)
             mSeekBar.setEnabled(!disableDependent);
         if (mImagePlus != null)
@@ -139,7 +139,6 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         // Remove possible previously attached change listener to prevent setting wrong values
         mSeekBar.setOnSeekBarChangeListener(null);
         mSeekBar.setMax(mMaxValue - mMinValue);
-        //mTitle = (TextView) holder.findViewById(android.R.id.title);
         mUnitsLeftText = (TextView) holder.findViewById(R.id.seekBarPrefUnitsLeft);
         mUnitsRightText = (TextView) holder.findViewById(R.id.seekBarPrefUnitsRight);
         mImagePlus = (ImageView) holder.findViewById(R.id.imagePlus);
@@ -176,8 +175,9 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         mStatusText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                final String defaultValue = getContext().getString(R.string.seekbar_default_value_set,
-                        mDefaultValue);
+                final String defaultValue = getContext().getString(
+                    R.string.seekbar_default_value_set, mDefaultValue
+                );
                 if (mDefaultValue != -1) {
                     if (mDefaultValue != mCurrentValue) {
                         mCurrentValue = mDefaultValue;
@@ -215,13 +215,11 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     }
 
     /**
-     * Update a SeekBarPreferenceCham view with our current state
+     * Update a SeekBarCustomPreference view with our current state
      * @param view
      */
     protected void updateView() {
-        if (!initialised) {
-            return;
-        }
+        if (!initialised) return;
         try {
             mStatusText.setText(String.valueOf(mCurrentValue));
             mSeekBar.setProgress(mCurrentValue - mMinValue);
@@ -230,8 +228,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
             mUnitsLeftText.setText(mUnitsLeft);
 
             updateCurrentValueText();
-        }
-        catch(Exception e) {
+        } catch(Exception e) {
             Log.e(TAG, "Error updating seek bar preference", e);
         }
     }
@@ -239,18 +236,20 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         int newValue = progress + mMinValue;
-        if(newValue > mMaxValue)
+        if(newValue > mMaxValue) {
             newValue = mMaxValue;
-        else if(newValue < mMinValue)
+        } else if(newValue < mMinValue) {
             newValue = mMinValue;
-        else if(mInterval != 1 && newValue % mInterval != 0)
+        } else if(mInterval != 1 && newValue % mInterval != 0) {
             newValue = Math.round(((float)newValue)/mInterval)*mInterval;
+        }
 
         // change rejected, revert to the previous value
         if(!callChangeListener(newValue)){
             seekBar.setProgress(mCurrentValue - mMinValue);
             return;
         }
+
         // change accepted, store it
         mCurrentValue = newValue;
         updateCurrentValueText();
@@ -260,8 +259,11 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         } else {
             stopUpdateViewValue();
         }
-
         persistInt(newValue);
+    }
+
+    public void refresh(int newValue) {
+        mSeekBar.setProgress(newValue - mMinValue);
     }
 
     private void updateCurrentValueText() {
@@ -323,10 +325,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         int[] seekbarPos = new int[2];
         int[] offsetPos = new int[2];
         mSeekBar.getLocationInWindow(seekbarPos);
-        View mainContentView = /*mSeekBar.getRootView().findViewById(R.id.content_main);
-        if (mainContentView == null) {
-            mainContentView =*/ mSeekBar.getRootView().findViewById(android.R.id.content);
-        //}
+        View mainContentView = mSeekBar.getRootView().findViewById(android.R.id.content);
         if (mainContentView == null) {
             Log.w(TAG, "Could not find main content view to calculate value view offset");
             offsetPos[0] = 0;
